@@ -15,6 +15,8 @@ public class BoomerangAbility : Ability
     private Animator animator;
     private Camera mainCamera;
     private Vector3 directionVector;
+    Rigidbody2D rb;
+    Vector3 lastVelocity;
 
     public override void DoAbility()
     {
@@ -23,12 +25,23 @@ public class BoomerangAbility : Ability
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         ServiceLocator.Instance.cameraManager.SetDynamicCameraObject(this.gameObject);
         animator = GetComponent<Animator>();
         mainCamera = Camera.main;
         Fire();
         StartCoroutine("LifeTimeCountDown");
 
+    }
+
+    private void Update()
+    {
+        //Debug.Log("Distance: " + Vector3.Distance(this.gameObject.transform.position, ServiceLocator.Instance.playerManager.GetPlayerPosition()));
+        lastVelocity = rb.velocity;
+        if(Vector3.Distance(this.gameObject.transform.position, ServiceLocator.Instance.playerManager.GetPlayerPosition()) > 20f)
+        {
+            ServiceLocator.Instance.cameraManager.ClearDynamicCameraObject(this.gameObject);
+        }
     }
 
     private void OnDestroy()
@@ -40,6 +53,7 @@ public class BoomerangAbility : Ability
     private void Fire()
     {
         GetDirectionVector();
+        rb.AddForce((directionVector * -1) * speed * 50);
         StartCoroutine("MoveCoroutine");
     }
 
@@ -57,10 +71,23 @@ public class BoomerangAbility : Ability
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Floor")
+        if(collision.gameObject.tag == "Floor" || collision.gameObject.tag == "TeleportAbility")
         {
-            directionVector = new Vector3(directionVector.x , directionVector.y * -1, 0f);
-            bouncesCount++;
+            if(maxBounces > bouncesCount)
+            {
+                //directionVector = new Vector3(directionVector.x , directionVector.y * -1, 0f);
+                var localSpeed = lastVelocity.magnitude;
+                var direction = Vector3.Reflect(lastVelocity.normalized, collision.contacts[0].normal);
+                rb.velocity = direction * Mathf.Max(speed, 0f);
+                bouncesCount++;
+            }
+            else
+            {
+                rb.gravityScale = 0;
+                rb.velocity = Vector3.zero;
+                rb.isKinematic = true;
+                animator.SetBool("Rotate", false);
+            }
         }
     }
 
@@ -75,7 +102,7 @@ public class BoomerangAbility : Ability
         Debug.Log("Coroutine running");
         while (bouncesCount <= maxBounces)
         {
-            transform.Translate((directionVector * -1) * (Time.deltaTime * speed));
+
             yield return null;
         }
         animator.SetBool("Rotate", false);

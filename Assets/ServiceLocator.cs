@@ -8,6 +8,7 @@ public class ServiceLocator : MonoBehaviour
 
     public CameraManager cameraManager;
     public PlayerManager playerManager;
+    public UIManager uiManager;
 
     private void Awake()
     {

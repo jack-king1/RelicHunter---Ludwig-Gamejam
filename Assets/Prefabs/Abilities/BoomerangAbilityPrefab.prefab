@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3314860047561976843}
   - component: {fileID: 811734080389955416}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,9 +157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxBounces: 2
-  speed: 10
+  speed: 5
   boomerangReturnTime: 0
-  lifeTime: 3.5
+  lifeTime: 10
 --- !u!95 &-2048328401057610958
 Animator:
   serializedVersion: 3
@@ -194,12 +194,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 0.15
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &2078826940350500235
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -236,7 +236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 973098815619332986}
   - component: {fileID: 4508957565375141866}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: boomerang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
