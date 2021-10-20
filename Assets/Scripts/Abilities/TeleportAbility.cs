@@ -11,17 +11,22 @@ public class TeleportAbility : Ability
     private Animator animator;
     private Vector3 directionVector;
     private Rigidbody2D rb;
+    private bool isGrounded = false;
 
     public override void DoAbility()
     {
 
     }
 
+    public bool IsGrounded()
+    {
+        return isGrounded;
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         Fire();
-        StartCoroutine("LifeTimeCountDown");
     }
 
     private void Fire()
@@ -40,15 +45,26 @@ public class TeleportAbility : Ability
         directionVector = (this.transform.position - new Vector3(mouseScreenPos.x, mouseScreenPos.y, 0f)).normalized;
     }
 
-    IEnumerator LifeTimeCountDown()
-    {
-        yield return new WaitForSeconds(lifeTime);
-        Destroy(this.gameObject);
-    }
-
     private void OnDestroy()
     {
         StopAllCoroutines();
         ServiceLocator.Instance.playerManager.GetPlayer().GetComponent<AbilityController>().RemoveTeleportAbilityRef(this.gameObject);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            isGrounded = true;
+        }
+        
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            isGrounded = false;
+        }
     }
 }

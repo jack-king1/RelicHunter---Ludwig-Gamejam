@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Floor
   - TeleportAbility
+  - WeightAbility
+  - BoomerangAbility
+  - VerticalFloor
   layers:
   - Default
   - TransparentFX
@@ -17,8 +20,8 @@ TagManager:
   - Floor
   - Boomerang
   - TeleportAbility
-  - 
-  - 
+  - WeightAbility
+  - VerticalWall
   - 
   - 
   - 

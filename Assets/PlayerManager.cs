@@ -15,4 +15,10 @@ public class PlayerManager : MonoBehaviour
     {
         return player.gameObject.transform.position;
     }
+
+
+    public void SetPlayerPosition(Vector3 pos)
+    {
+        player.transform.position = pos;
+    }
 }

@@ -24,6 +24,7 @@ public class AbilityController : MonoBehaviour
     public bool activateAbilityIndicator = false;
 
     private GameObject teleportAbilityRef;
+    private GameObject weightAbilityRef;
 
     private void Start()
     {
@@ -41,8 +42,24 @@ public class AbilityController : MonoBehaviour
             {
                 if (!activateAbilityIndicator)
                 {
-                    activateAbilityIndicator = true;
-                    abilityIndicator.SetActive(activateAbilityIndicator);
+                    if (teleportAbilityRef != null && abilityState == ABILITY.TELEPORT)
+                    {
+                        ServiceLocator.Instance.playerManager.GetPlayer().GetComponent<PlayerController>().SetGrounded(false);
+                        Vector3 pos = new Vector3(teleportAbilityRef.transform.position.x, teleportAbilityRef.transform.position.y + 0.5f, 0);
+                        ServiceLocator.Instance.playerManager.SetPlayerPosition(pos);
+                        Destroy(teleportAbilityRef);
+                        teleportAbilityRef = null;
+                    }
+                    else if(weightAbilityRef != null && abilityState == ABILITY.WEIGHT)
+                    {
+                        Destroy(weightAbilityRef);
+                        weightAbilityRef = null;
+                    }
+                    else
+                    {
+                        activateAbilityIndicator = true;
+                        abilityIndicator.SetActive(activateAbilityIndicator);
+                    }
                 }
                 else
                 {
@@ -53,7 +70,22 @@ public class AbilityController : MonoBehaviour
                             Destroy(teleportAbilityRef);
                             teleportAbilityRef = null;
                         }
-                        teleportAbilityRef =  Instantiate(activeAbility, transform.position, Quaternion.identity);
+                        else
+                        {
+                            teleportAbilityRef = Instantiate(activeAbility, transform.position, Quaternion.identity);
+                        }
+                    }
+                    else if(abilityState == ABILITY.WEIGHT)
+                    {
+                        if (weightAbilityRef != null)
+                        {
+                            Destroy(weightAbilityRef);
+                            weightAbilityRef = null;
+                        }
+                        else
+                        {
+                            weightAbilityRef = Instantiate(activeAbility, transform.position, Quaternion.identity);
+                        }
                     }
                     else
                     {

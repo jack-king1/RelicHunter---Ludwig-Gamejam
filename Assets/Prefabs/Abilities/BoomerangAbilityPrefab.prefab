@@ -97,7 +97,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 2.56
+  m_PointLightOuterRadius: 4.5
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 2078826940350500235}
   m_Layer: 8
   m_Name: BoomerangAbilityPrefab
-  m_TagString: Untagged
+  m_TagString: BoomerangAbility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

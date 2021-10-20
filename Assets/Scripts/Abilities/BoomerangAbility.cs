@@ -71,7 +71,8 @@ public class BoomerangAbility : Ability
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Floor" || collision.gameObject.tag == "TeleportAbility")
+        if(collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("TeleportAbility") || 
+            collision.gameObject.CompareTag("WeightAbility") || collision.gameObject.CompareTag("VerticalFloor"))
         {
             if(maxBounces > bouncesCount)
             {

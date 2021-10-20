@@ -69,11 +69,32 @@ public class PlayerController : MonoBehaviour
         isGrounded = false;
     }
 
+    public void SetGrounded(bool setGrounded)
+    {
+        isGrounded = setGrounded;
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "TeleportAbility")
+        if (collision.gameObject.CompareTag("Floor"))
         {
             isGrounded = true;
+        }
+
+        if(collision.gameObject.CompareTag("TeleportAbility"))
+        {
+            if(collision.gameObject.GetComponent<TeleportAbility>().IsGrounded())
+            {
+                isGrounded = true;
+            }
+        }
+
+        if (collision.gameObject.CompareTag("WeightAbility"))
+        {
+            if (collision.gameObject.GetComponent<WeightAbility>().IsGrounded())
+            {
+                isGrounded = true;
+            }
         }
     }
 }
