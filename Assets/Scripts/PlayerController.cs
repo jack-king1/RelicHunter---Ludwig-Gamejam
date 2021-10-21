@@ -8,9 +8,13 @@ public class PlayerController : MonoBehaviour
     public float speed = 10;
     public float jumpForce = 10;
 
+    public BoxCollider2D facingLeftCollider;
+    public BoxCollider2D facingRightCollider;
+
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
+
 
     private bool isGrounded = true;
     private void Start()
@@ -27,6 +31,8 @@ public class PlayerController : MonoBehaviour
             if(!spriteRenderer.flipX)
             {
                 spriteRenderer.flipX = true;
+                facingLeftCollider.enabled = true;
+                facingRightCollider.enabled = false;
             }
         }
         else if(Input.GetKeyDown(KeyCode.D))
@@ -34,6 +40,8 @@ public class PlayerController : MonoBehaviour
             if(spriteRenderer)
             {
                 spriteRenderer.flipX = false;
+                facingLeftCollider.enabled = false;
+                facingRightCollider.enabled = true;
             }
         }
 
@@ -96,5 +104,10 @@ public class PlayerController : MonoBehaviour
                 isGrounded = true;
             }
         }
+    }
+
+    public Rigidbody2D GetRigidBody()
+    {
+        return rb;
     }
 }

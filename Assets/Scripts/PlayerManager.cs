@@ -21,4 +21,15 @@ public class PlayerManager : MonoBehaviour
     {
         player.transform.position = pos;
     }
+
+    public void SetPlayerSpeedY(float velocityY)
+    {
+        Rigidbody2D rb = player.GetComponent<PlayerController>().GetRigidBody();
+        rb.velocity = new Vector3(rb.velocity.x, velocityY);
+    }
+
+    public AbilityController GetPlayerAbilityController()
+    {
+        return player.GetComponent<AbilityController>();
+    }
 }

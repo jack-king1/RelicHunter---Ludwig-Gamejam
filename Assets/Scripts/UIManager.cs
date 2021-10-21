@@ -9,6 +9,13 @@ public class UIManager : MonoBehaviour
     public GameObject teleportAbilityUI;
     public GameObject weightAbilityUI;
 
+    //Notification Objects
+    public Text notificationHeader;
+    public Text notificationMessage;
+    public GameObject notificationPanel;
+    public Transform notificaitonPanelOffScreen;
+    public Transform notificaitonPanelOnScreen;
+
     public void SetAbilityUI(ABILITY type)
     {
         switch (type)
@@ -36,5 +43,17 @@ public class UIManager : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void DisplayNotification(ScriptableNotifications notification)
+    {
+        notificationHeader.text = notification.header;
+        notificationMessage.text = notification.message;
+        LeanTween.moveLocalY(notificationPanel, notificaitonPanelOnScreen.localPosition.y, 1f).setEase(LeanTweenType.easeInSine);
+    }
+
+    public void EndDisplayNotification()
+    {
+        LeanTween.moveLocalY(notificationPanel, notificaitonPanelOffScreen.localPosition.y, 1f).setEase(LeanTweenType.easeInSine);
     }
 }

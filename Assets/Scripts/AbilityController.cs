@@ -23,6 +23,18 @@ public class AbilityController : MonoBehaviour
     public GameObject abilityIndicator;
     public bool activateAbilityIndicator = false;
 
+    public ScriptableNotifications boomerangNotification;
+    public ScriptableNotifications teleportNotification;
+    public ScriptableNotifications weightNotification;
+
+    private bool boomerangNotificationActivated = false;
+    private bool teleportNotificationActivated = false;
+    private bool weightNotificationActivated = false;
+
+    [SerializeField] private float teleportCooldown = 2f;
+    private float teleportTimer = 0f;
+
+
     private GameObject teleportAbilityRef;
     private GameObject weightAbilityRef;
 
@@ -35,6 +47,15 @@ public class AbilityController : MonoBehaviour
 
     private void Update()
     {
+        if(teleportTimer > 0)
+        {
+            teleportTimer -= Time.deltaTime;
+            if(teleportTimer < 0)
+            {
+                teleportTimer = 0;
+            }
+        }
+
         if(Input.GetKeyDown(KeyCode.E))
         {
             //Do ability
@@ -47,18 +68,30 @@ public class AbilityController : MonoBehaviour
                         ServiceLocator.Instance.playerManager.GetPlayer().GetComponent<PlayerController>().SetGrounded(false);
                         Vector3 pos = new Vector3(teleportAbilityRef.transform.position.x, teleportAbilityRef.transform.position.y + 0.5f, 0);
                         ServiceLocator.Instance.playerManager.SetPlayerPosition(pos);
+                        ServiceLocator.Instance.playerManager.SetPlayerSpeedY(0f);
                         Destroy(teleportAbilityRef);
                         teleportAbilityRef = null;
+                        SetActiveAbilityCooldown();
+                        
                     }
                     else if(weightAbilityRef != null && abilityState == ABILITY.WEIGHT)
                     {
                         Destroy(weightAbilityRef);
                         weightAbilityRef = null;
+                        SetActiveAbilityCooldown();
                     }
                     else
                     {
-                        activateAbilityIndicator = true;
-                        abilityIndicator.SetActive(activateAbilityIndicator);
+                        if (AbilityOffCooldown() && abilityState == ABILITY.TELEPORT)
+                        {
+                            activateAbilityIndicator = true;
+                            abilityIndicator.SetActive(activateAbilityIndicator);
+                        }
+                        else if (abilityState != ABILITY.TELEPORT)
+                        {
+                            activateAbilityIndicator = true;
+                            abilityIndicator.SetActive(activateAbilityIndicator);
+                        }
                     }
                 }
                 else
@@ -72,7 +105,15 @@ public class AbilityController : MonoBehaviour
                         }
                         else
                         {
-                            teleportAbilityRef = Instantiate(activeAbility, transform.position, Quaternion.identity);
+                            if(AbilityOffCooldown())
+                            {
+                                if (!teleportNotificationActivated)
+                                {
+                                    teleportNotificationActivated = true;
+                                    ServiceLocator.Instance.notificationManager.AddNotification(teleportNotification);
+                                }
+                                teleportAbilityRef = Instantiate(activeAbility, transform.position, Quaternion.identity);
+                            }
                         }
                     }
                     else if(abilityState == ABILITY.WEIGHT)
@@ -84,11 +125,21 @@ public class AbilityController : MonoBehaviour
                         }
                         else
                         {
+                            if (!weightNotificationActivated)
+                            {
+                                weightNotificationActivated = true;
+                                ServiceLocator.Instance.notificationManager.AddNotification(weightNotification);
+                            }
                             weightAbilityRef = Instantiate(activeAbility, transform.position, Quaternion.identity);
                         }
                     }
                     else
                     {
+                        if(!boomerangNotificationActivated)
+                        {
+                            boomerangNotificationActivated = true;
+                            ServiceLocator.Instance.notificationManager.AddNotification(boomerangNotification);
+                        }
                         Instantiate(activeAbility, transform.position, Quaternion.identity);
                     }
                     
@@ -140,6 +191,39 @@ public class AbilityController : MonoBehaviour
         }
     }
 
+    private void SetActiveAbilityCooldown()
+    {
+        switch (abilityState)
+        {
+            case ABILITY.NONE:
+                break;
+            case ABILITY.BOOMERANG:
+                //boomerangTimer = boomerangCooldown;
+                break;
+            case ABILITY.TELEPORT:
+                teleportTimer = teleportCooldown;
+                break;
+            case ABILITY.WEIGHT:
+                //weightTimer = weightCooldown;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private bool AbilityOffCooldown()
+    {
+        switch (abilityState)
+        {
+            case ABILITY.NONE:
+                return true;
+            case ABILITY.TELEPORT:
+                return teleportTimer <= 0;
+        }
+
+        return false;
+    }
+
     public void RemoveTeleportAbilityRef(GameObject obj)
     {
         if(teleportAbilityRef == obj)
@@ -147,5 +231,18 @@ public class AbilityController : MonoBehaviour
             Destroy(teleportAbilityRef);
             teleportAbilityRef = null;
         }
+    }
+
+    public float GetActiveAbilityCooldown()
+    {
+        switch (abilityState)
+        {
+            case ABILITY.NONE:
+                return 0;
+            case ABILITY.TELEPORT:
+                return teleportTimer;
+        }
+
+        return 0f;
     }
 }

@@ -213,7 +213,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: -0
-  m_PointLightOuterRadius: 4.14
+  m_PointLightOuterRadius: 6
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -296,7 +296,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 9838f07187e441f458af45ed59975e07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -446,11 +446,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1530390756943059692}
   - component: {fileID: 8411328156570394914}
+  - component: {fileID: 957862066}
+  - component: {fileID: 957862068}
   - component: {fileID: 765623293929532819}
   - component: {fileID: 5476777704766622934}
   - component: {fileID: 957862067}
-  - component: {fileID: 957862066}
-  - component: {fileID: 957862068}
+  - component: {fileID: 8656914026610306192}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -494,6 +495,42 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &957862066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530390756943059695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c856bba1282ad4397143f5fd4dad1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  jumpForce: 8
+  facingLeftCollider: {fileID: 8656914026610306192}
+  facingRightCollider: {fileID: 957862067}
+--- !u!114 &957862068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530390756943059695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 833d74fefe6857547848d6858acbc030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeAbility: {fileID: 0}
+  boomerangAbility: {fileID: 4110638900700204113, guid: a62638d931164f04e9ee5acc1b3f8147, type: 3}
+  teleportAbility: {fileID: 7053808285408179441, guid: 4db06a384b884244b8dcdfff75a37bc1, type: 3}
+  weightAbility: {fileID: 198940886579786927, guid: d10860ad418360942a3a996e0870182d, type: 3}
+  abilityState: 0
+  abilityIndicator: {fileID: 1246888907}
+  activateAbilityIndicator: 0
+  teleportCooldown: 2
 --- !u!212 &765623293929532819
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -565,7 +602,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &957862067
 BoxCollider2D:
@@ -593,36 +630,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.0054645822, y: 0.008927827}
   m_EdgeRadius: 0
---- !u!114 &957862066
-MonoBehaviour:
+--- !u!61 &8656914026610306192
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530390756943059695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9c856bba1282ad4397143f5fd4dad1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 8
---- !u!114 &957862068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1530390756943059695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 833d74fefe6857547848d6858acbc030, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeAbility: {fileID: 0}
-  boomerangAbility: {fileID: 4110638900700204113, guid: a62638d931164f04e9ee5acc1b3f8147, type: 3}
-  teleportAbility: {fileID: 7053808285408179441, guid: 4db06a384b884244b8dcdfff75a37bc1, type: 3}
-  weightAbility: {fileID: 198940886579786927, guid: d10860ad418360942a3a996e0870182d, type: 3}
-  abilityState: 0
-  abilityIndicator: {fileID: 1246888907}
-  activateAbilityIndicator: 0
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0009815722, y: -0.0017860862}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.019, y: 0.0125}
+    newSize: {x: 0.038, y: 0.025}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.005310448, y: 0.008927827}
+  m_EdgeRadius: 0

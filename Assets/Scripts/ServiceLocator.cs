@@ -9,6 +9,9 @@ public class ServiceLocator : MonoBehaviour
     public CameraManager cameraManager;
     public PlayerManager playerManager;
     public UIManager uiManager;
+    public AudioManager audioManager;
+    public GameManager gameManager;
+    public NotificationManager notificationManager;
 
     private void Awake()
     {

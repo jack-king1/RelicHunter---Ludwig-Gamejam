@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ccf20de1b15af448f68c28d8136939, type: 3}
+  m_Name: BackgroundMusic_InGame
+  m_EditorClassIdentifier: 
+  soundName: GameMusic
+  AudioClips:
+  - {fileID: 8300000, guid: 80304aed9a4e9cf4495a40570161edf5, type: 3}
+  IsSpatial: 0
+  MaxDistance: 100
+  MinDistance: 10
+  VolumeScale: 1
+  DopplerLevel: 0
+  PitchOffset: 0
+  pitchOffsetMin: 0
+  pitchOffsetMax: 0
+  IsLooping: 1
+  AudioMixerGroup: {fileID: 7083067481877385835, guid: 86cd10b75f5c57f45b12019ffab10d79, type: 2}
