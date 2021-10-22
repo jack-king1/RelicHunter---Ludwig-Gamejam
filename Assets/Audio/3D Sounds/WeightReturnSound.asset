@@ -18,9 +18,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 817155b5ed7ffc348a8b77b1a1bf3fb7, type: 3}
   - {fileID: 8300000, guid: 637a39cbc41eebd4bb649cf456302ccc, type: 3}
   IsSpatial: 1
-  MaxDistance: 100
-  MinDistance: 10
-  VolumeScale: 1
+  MaxDistance: 7
+  MinDistance: 2
+  VolumeScale: 0.5
   DopplerLevel: 0
   PitchOffset: 0
   pitchOffsetMin: 0

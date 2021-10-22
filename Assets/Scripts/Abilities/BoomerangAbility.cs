@@ -57,7 +57,7 @@ public class BoomerangAbility : Ability
         GetDirectionVector();
         rb.AddForce((directionVector * -1) * speed * 50);
         StartCoroutine("MoveCoroutine");
-        soundInstance = ServiceLocator.Instance.audioManager.PlaySound(this.gameObject,ServiceLocator.Instance.audioManager.GetSoundBank("Boomerang"),0.5f);
+        soundInstance = ServiceLocator.Instance.audioManager.PlaySound(this.gameObject,ServiceLocator.Instance.audioManager.GetSoundBank("Boomerang"),0.01f);
     }
 
     void GetDirectionVector()
@@ -83,7 +83,10 @@ public class BoomerangAbility : Ability
                 var localSpeed = lastVelocity.magnitude;
                 var direction = Vector3.Reflect(lastVelocity.normalized, collision.contacts[0].normal);
                 rb.velocity = direction * Mathf.Max(speed, 0f);
-                bouncesCount++;
+                if(!collision.gameObject.CompareTag("TeleportAbility"))
+                {
+                    bouncesCount++;
+                }
             }
             else
             {

@@ -32,7 +32,7 @@ public class TeleportAbility : Ability
     private void Fire()
     {
         GetDirectionVector();
-        rb.AddForce((directionVector * -1 ) * thrust);
+        rb.AddRelativeForce((directionVector * -1 ) * thrust);
     }
 
     void GetDirectionVector()
@@ -48,7 +48,7 @@ public class TeleportAbility : Ability
     private void OnDestroy()
     {
         StopAllCoroutines();
-        ServiceLocator.Instance.audioManager.PlaySound(ServiceLocator.Instance.playerManager.GetPlayer().gameObject, ServiceLocator.Instance.audioManager.GetSoundBank("Teleport"), 0.5f);
+        ServiceLocator.Instance.audioManager.PlaySound(ServiceLocator.Instance.playerManager.GetPlayer().gameObject, ServiceLocator.Instance.audioManager.GetSoundBank("Teleport"), 0.05f);
         ServiceLocator.Instance.playerManager.GetPlayer().GetComponent<AbilityController>().RemoveTeleportAbilityRef(this.gameObject);
     }
 
@@ -58,7 +58,6 @@ public class TeleportAbility : Ability
         {
             isGrounded = true;
         }
-        
     }
 
     private void OnCollisionExit2D(Collision2D collision)

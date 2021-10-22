@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ccf20de1b15af448f68c28d8136939, type: 3}
+  m_Name: LoudThudSound
+  m_EditorClassIdentifier: 
+  soundName: LoudThud
+  AudioClips:
+  - {fileID: 8300000, guid: bd512e9278b49004ab21263d29b9a098, type: 3}
+  - {fileID: 8300000, guid: c9e6c7a72c9aece4f8712ce585928069, type: 3}
+  - {fileID: 8300000, guid: f8592e72f2e35124b87063a8c901f05a, type: 3}
+  - {fileID: 8300000, guid: 1bf6da14863ae7a4ba7be24b8068d49e, type: 3}
+  IsSpatial: 1
+  MaxDistance: 7
+  MinDistance: 2
+  VolumeScale: 0.1
+  DopplerLevel: 0
+  PitchOffset: 0
+  pitchOffsetMin: 0
+  pitchOffsetMax: 0
+  IsLooping: 0
+  AudioMixerGroup: {fileID: -6108973967969740689, guid: 86cd10b75f5c57f45b12019ffab10d79, type: 2}

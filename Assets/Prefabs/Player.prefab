@@ -83,7 +83,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,6 +452,7 @@ GameObject:
   - component: {fileID: 5476777704766622934}
   - component: {fileID: 957862067}
   - component: {fileID: 8656914026610306192}
+  - component: {fileID: 5256382517966224383}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -530,6 +531,9 @@ MonoBehaviour:
   abilityState: 0
   abilityIndicator: {fileID: 1246888907}
   activateAbilityIndicator: 0
+  boomerangNotification: {fileID: 11400000, guid: 3422daabf9ad0934f8d2eb247d2aafe5, type: 2}
+  teleportNotification: {fileID: 11400000, guid: 5fedbd59612562a4bb67f867daa218bc, type: 2}
+  weightNotification: {fileID: 11400000, guid: 521bbd90ec622ad4dbf212c415eb7af1, type: 2}
   teleportCooldown: 2
 --- !u!212 &765623293929532819
 SpriteRenderer:
@@ -571,7 +575,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 8793639957104055765, guid: 137d2436f07a9154687a83b00c7d8f41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -656,3 +660,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.005310448, y: 0.008927827}
   m_EdgeRadius: 0
+--- !u!81 &5256382517966224383
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530390756943059695}
+  m_Enabled: 1

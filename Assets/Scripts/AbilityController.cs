@@ -56,14 +56,35 @@ public class AbilityController : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            abilityState = ABILITY.BOOMERANG;
+            ServiceLocator.Instance.uiManager.SetAbilityUI(abilityState);
+            SetActiveAbility();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            abilityState = ABILITY.TELEPORT;
+            ServiceLocator.Instance.uiManager.SetAbilityUI(abilityState);
+            SetActiveAbility();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            abilityState = ABILITY.WEIGHT;
+            ServiceLocator.Instance.uiManager.SetAbilityUI(abilityState);
+            SetActiveAbility();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3))
         {
             //Do ability
             if(abilityState != ABILITY.NONE)
             {
                 if (!activateAbilityIndicator)
                 {
-                    if (teleportAbilityRef != null && abilityState == ABILITY.TELEPORT)
+                    if (teleportAbilityRef != null && (abilityState == ABILITY.TELEPORT || Input.GetKeyDown(KeyCode.Alpha2)))
                     {
                         ServiceLocator.Instance.playerManager.GetPlayer().GetComponent<PlayerController>().SetGrounded(false);
                         Vector3 pos = new Vector3(teleportAbilityRef.transform.position.x, teleportAbilityRef.transform.position.y + 0.5f, 0);
@@ -74,11 +95,11 @@ public class AbilityController : MonoBehaviour
                         SetActiveAbilityCooldown();
                         
                     }
-                    else if(weightAbilityRef != null && abilityState == ABILITY.WEIGHT)
+                    else if(weightAbilityRef != null && abilityState == ABILITY.WEIGHT && weightAbilityRef.GetComponent<WeightAbility>().GetReturning() == false)
                     {
-                        Destroy(weightAbilityRef);
-                        weightAbilityRef = null;
-                        SetActiveAbilityCooldown();
+
+                        //Return To Player Code
+                        weightAbilityRef.GetComponent<WeightAbility>().ReturnToPlayer();
                     }
                     else
                     {
@@ -244,5 +265,23 @@ public class AbilityController : MonoBehaviour
         }
 
         return 0f;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("WeightAbility"))
+        {
+            Destroy(weightAbilityRef);
+            weightAbilityRef = null;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("WeightAbility"))
+        {
+            Destroy(weightAbilityRef);
+            weightAbilityRef = null;
+        }
     }
 }

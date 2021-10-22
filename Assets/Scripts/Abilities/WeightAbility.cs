@@ -13,7 +13,11 @@ public class WeightAbility : Ability
     private Rigidbody2D rb;
     private bool isGrounded = false;
     private Vector3 directionVector;
+    private CircleCollider2D circleCollider;
     AudioManager.AudioInstance soundInstance;
+    private bool returningToPlayer = false;
+
+    bool firstContact = false;
 
     public override void DoAbility()
     {
@@ -22,6 +26,7 @@ public class WeightAbility : Ability
 
     private void Start()
     {
+        circleCollider = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         Fire();
     }
@@ -40,8 +45,13 @@ public class WeightAbility : Ability
 
         GetDirectionVector();
         rb.AddForce((directionVector * -1) * thrust);
-        soundInstance = ServiceLocator.Instance.audioManager.PlaySound(this.gameObject, ServiceLocator.Instance.audioManager.GetSoundBank("Weight"), 0.5f);
+        soundInstance = ServiceLocator.Instance.audioManager.PlaySound(this.gameObject, ServiceLocator.Instance.audioManager.GetSoundBank("Weight"), 0.2f);
         StartCoroutine("AddForce");
+    }
+
+    public bool GetReturning()
+    {
+        return returningToPlayer;
     }
 
     void GetDirectionVector()
@@ -57,7 +67,16 @@ public class WeightAbility : Ability
     private void OnDestroy()
     {
         StopAllCoroutines();
-        ServiceLocator.Instance.audioManager.PlaySound(ServiceLocator.Instance.playerManager.GetPlayer().gameObject, ServiceLocator.Instance.audioManager.GetSoundBank("WeightReturn"), 4f);
+        ServiceLocator.Instance.audioManager.PlaySound(ServiceLocator.Instance.playerManager.GetPlayer().gameObject, ServiceLocator.Instance.audioManager.GetSoundBank("WeightReturn"));
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!firstContact && !collision.gameObject.CompareTag("Player"))
+        {
+            firstContact = true;
+            ServiceLocator.Instance.audioManager.PlaySound(this.gameObject, ServiceLocator.Instance.audioManager.GetSoundBank("LoudThud"), 0.5f);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -67,10 +86,9 @@ public class WeightAbility : Ability
             isGrounded = false;
         }
     }
-
+    
     public bool IsGrounded()
     {
-
         return isGrounded;
     }
 
@@ -82,5 +100,31 @@ public class WeightAbility : Ability
         rb.AddForce(-transform.up * downwardThrust);
         rb.mass = massAfterWait;
         rb.gravityScale = gravityScaleAfterWait;
+    }
+
+    IEnumerator ReturnToPlayerCoroutine()
+    {
+        
+        while(Vector3.Distance(this.gameObject.transform.position, ServiceLocator.Instance.playerManager.GetPlayerPosition()) > 0.1f)
+        {
+            transform.Translate(GetDirectionVectorToPlayer() * Time.deltaTime * 50);
+            yield return null;
+        }
+    }
+
+    Vector3 GetDirectionVectorToPlayer()
+    {
+        Vector3 tempVec = new Vector3();
+        tempVec = (ServiceLocator.Instance.playerManager.GetPlayerPosition() - gameObject.transform.position).normalized;
+        return tempVec;
+    }
+
+    public void ReturnToPlayer()
+    {
+        returningToPlayer = true;
+        rb.isKinematic = true;
+        rb.freezeRotation = true;
+        circleCollider.isTrigger = true;
+        StartCoroutine("ReturnToPlayerCoroutine");
     }
 }
