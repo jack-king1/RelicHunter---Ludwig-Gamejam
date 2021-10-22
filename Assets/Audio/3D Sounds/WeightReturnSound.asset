@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50ccf20de1b15af448f68c28d8136939, type: 3}
-  m_Name: BoomerangSound
+  m_Name: WeightReturnSound
   m_EditorClassIdentifier: 
-  soundName: Boomerang
+  soundName: WeightReturn
   AudioClips:
-  - {fileID: 8300000, guid: d2329f57b23204d4f96247f46a5456ff, type: 3}
-  - {fileID: 8300000, guid: 8e62fa65c71e21a409316aaaaa979ffe, type: 3}
-  - {fileID: 8300000, guid: 5a947be60454106438bc1a5dbc27ba3d, type: 3}
+  - {fileID: 8300000, guid: 189320e358edba348a5bcb531d08c5cf, type: 3}
+  - {fileID: 8300000, guid: 817155b5ed7ffc348a8b77b1a1bf3fb7, type: 3}
+  - {fileID: 8300000, guid: 637a39cbc41eebd4bb649cf456302ccc, type: 3}
   IsSpatial: 1
-  MaxDistance: 6
-  MinDistance: 2
+  MaxDistance: 100
+  MinDistance: 10
   VolumeScale: 1
   DopplerLevel: 0
   PitchOffset: 0
   pitchOffsetMin: 0
   pitchOffsetMax: 0
-  IsLooping: 1
+  IsLooping: 0
   AudioMixerGroup: {fileID: -6108973967969740689, guid: 86cd10b75f5c57f45b12019ffab10d79, type: 2}

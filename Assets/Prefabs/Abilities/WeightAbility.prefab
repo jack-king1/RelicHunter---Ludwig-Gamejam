@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7722061320727114532}
   - component: {fileID: 2910833301789211411}
   - component: {fileID: -4313233820501832433}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WeightAbility
   m_TagString: WeightAbility
   m_Icon: {fileID: 0}
@@ -47,6 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490927e83f727d8419658c5d683ce145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thrust: 500
+  downwardThrust: 500
+  massAfterWait: 7
+  gravityScaleAfterWait: 5
+  waitTimeUntillAddForce: 1
 --- !u!212 &7082314479860053071
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -130,14 +135,14 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5000
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 7
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &-4313233820501832433
 CircleCollider2D:

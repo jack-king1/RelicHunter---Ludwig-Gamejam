@@ -9,6 +9,7 @@ TagManager:
   - WeightAbility
   - BoomerangAbility
   - VerticalFloor
+  - Catapult
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - TeleportAbility
   - WeightAbility
   - VerticalWall
-  - 
+  - Catapult
   - 
   - 
   - 

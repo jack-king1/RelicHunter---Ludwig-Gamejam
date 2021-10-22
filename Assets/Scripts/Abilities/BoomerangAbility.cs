@@ -57,9 +57,7 @@ public class BoomerangAbility : Ability
         GetDirectionVector();
         rb.AddForce((directionVector * -1) * speed * 50);
         StartCoroutine("MoveCoroutine");
-        soundInstance = ServiceLocator.Instance.audioManager.PlaySound(this.gameObject,ServiceLocator.Instance.audioManager.GetSoundBank("Boomerang"),1);
-        soundInstance.AudioSource.minDistance = 3;
-        soundInstance.AudioSource.maxDistance = 7;
+        soundInstance = ServiceLocator.Instance.audioManager.PlaySound(this.gameObject,ServiceLocator.Instance.audioManager.GetSoundBank("Boomerang"),0.5f);
     }
 
     void GetDirectionVector()
