@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ccf20de1b15af448f68c28d8136939, type: 3}
+  m_Name: TeleportSound
+  m_EditorClassIdentifier: 
+  soundName: Teleport
+  AudioClips:
+  - {fileID: 8300000, guid: f9f4f59e3bb6cfa44ab47f767675fe48, type: 3}
+  - {fileID: 8300000, guid: 8b151efe278fca746b783dc801095dc0, type: 3}
+  - {fileID: 8300000, guid: dbcce1c3e94b6ed4f87c8c618d3e79c2, type: 3}
+  IsSpatial: 1
+  MaxDistance: 100
+  MinDistance: 10
+  VolumeScale: 1
+  DopplerLevel: 0
+  PitchOffset: 0
+  pitchOffsetMin: 0
+  pitchOffsetMax: 0
+  IsLooping: 0
+  AudioMixerGroup: {fileID: -6108973967969740689, guid: 86cd10b75f5c57f45b12019ffab10d79, type: 2}

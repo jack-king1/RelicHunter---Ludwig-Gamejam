@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ccf20de1b15af448f68c28d8136939, type: 3}
+  m_Name: BoomerangSound
+  m_EditorClassIdentifier: 
+  soundName: Boomerang
+  AudioClips:
+  - {fileID: 8300000, guid: d2329f57b23204d4f96247f46a5456ff, type: 3}
+  - {fileID: 8300000, guid: 8e62fa65c71e21a409316aaaaa979ffe, type: 3}
+  - {fileID: 8300000, guid: 5a947be60454106438bc1a5dbc27ba3d, type: 3}
+  IsSpatial: 1
+  MaxDistance: 100
+  MinDistance: 10
+  VolumeScale: 1
+  DopplerLevel: 0
+  PitchOffset: 0
+  pitchOffsetMin: 0
+  pitchOffsetMax: 0
+  IsLooping: 1
+  AudioMixerGroup: {fileID: -6108973967969740689, guid: 86cd10b75f5c57f45b12019ffab10d79, type: 2}

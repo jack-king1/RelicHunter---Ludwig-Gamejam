@@ -17,6 +17,8 @@ public class BoomerangAbility : Ability
     private Vector3 directionVector;
     Rigidbody2D rb;
     Vector3 lastVelocity;
+    AudioManager.AudioInstance soundInstance; 
+
 
     public override void DoAbility()
     {
@@ -55,6 +57,9 @@ public class BoomerangAbility : Ability
         GetDirectionVector();
         rb.AddForce((directionVector * -1) * speed * 50);
         StartCoroutine("MoveCoroutine");
+        soundInstance = ServiceLocator.Instance.audioManager.PlaySound(this.gameObject,ServiceLocator.Instance.audioManager.GetSoundBank("Boomerang"),1);
+        soundInstance.AudioSource.minDistance = 3;
+        soundInstance.AudioSource.maxDistance = 7;
     }
 
     void GetDirectionVector()
@@ -88,6 +93,7 @@ public class BoomerangAbility : Ability
                 rb.velocity = Vector3.zero;
                 rb.isKinematic = true;
                 animator.SetBool("Rotate", false);
+                soundInstance.AudioSource.Stop();
             }
         }
     }

@@ -48,6 +48,7 @@ public class TeleportAbility : Ability
     private void OnDestroy()
     {
         StopAllCoroutines();
+        ServiceLocator.Instance.audioManager.PlaySound(ServiceLocator.Instance.playerManager.GetPlayer().gameObject, ServiceLocator.Instance.audioManager.GetSoundBank("Teleport"), 1);
         ServiceLocator.Instance.playerManager.GetPlayer().GetComponent<AbilityController>().RemoveTeleportAbilityRef(this.gameObject);
     }
 
