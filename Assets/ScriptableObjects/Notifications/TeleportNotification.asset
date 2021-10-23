@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: Teleport Stick
   message: Use it to teleport across large gaps and escape! Has 2 second Cooldown.
-    Be careful, the only way to get it back is to teleport to it!
+    Be careful, the only way to get it back is by teleporting!
   activationTime: 0
   displayTime: 7

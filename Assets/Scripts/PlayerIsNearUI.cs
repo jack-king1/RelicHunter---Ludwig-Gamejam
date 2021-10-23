@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerIsNearUI : MonoBehaviour
 {
+    [SerializeField] private bool startInvisible;
     [SerializeField] private float distanceToPlayer = 8f;
     [SerializeField] private float offSet = 10f;
     private Transform playerTransform;
@@ -14,12 +15,18 @@ public class PlayerIsNearUI : MonoBehaviour
     private float cooldown = 1f;
     private float timer = 0f;
 
+
     private void Start()
     {
         playerTransform = ServiceLocator.Instance.playerManager.GetPlayer().transform;
         displayPos = gameObject.transform.position;
         offPos = new Vector3(displayPos.x, displayPos.y + offSet, displayPos.z);
         myRectTransform = GetComponent<RectTransform>();
+        if(startInvisible)
+        {
+            Color temp = GetComponent<Text>().color;
+            GetComponent<Text>().color = new Color(temp.r,temp.g,temp.b,0f); 
+        }
     }
 
     private void Update()

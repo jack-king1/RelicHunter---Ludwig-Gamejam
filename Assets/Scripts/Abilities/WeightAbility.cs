@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeightAbility : Ability
 {
+    public float totalLifetime = 15f;
     public float thrust = 5;
     public float downwardThrust = 500;
     public float massAfterWait = 7;
@@ -100,6 +101,13 @@ public class WeightAbility : Ability
         rb.AddForce(-transform.up * downwardThrust);
         rb.mass = massAfterWait;
         rb.gravityScale = gravityScaleAfterWait;
+        StartCoroutine("ReturnAfterTimeDelay");
+    }
+
+    IEnumerator ReturnAfterTimeDelay()
+    {
+        yield return new WaitForSeconds(totalLifetime);
+        ReturnToPlayer();
     }
 
     IEnumerator ReturnToPlayerCoroutine()
@@ -123,6 +131,9 @@ public class WeightAbility : Ability
     {
         returningToPlayer = true;
         rb.isKinematic = true;
+        rb.velocity = Vector3.zero;
+        rb.gravityScale = 0;
+        rb.mass = 0;
         rb.freezeRotation = true;
         circleCollider.isTrigger = true;
         StartCoroutine("ReturnToPlayerCoroutine");
