@@ -141,7 +141,7 @@ public class AbilityController : MonoBehaviour
                     {
                         if (weightAbilityRef != null)
                         {
-                            Destroy(weightAbilityRef);
+                            weightAbilityRef.GetComponent<WeightAbility>().ReturnToPlayer();
                             weightAbilityRef = null;
                         }
                         else

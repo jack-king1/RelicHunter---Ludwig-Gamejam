@@ -104,7 +104,7 @@ public class WeightAbility : Ability
 
     IEnumerator ReturnToPlayerCoroutine()
     {
-        
+        StopCoroutine("AddForce");
         while(Vector3.Distance(this.gameObject.transform.position, ServiceLocator.Instance.playerManager.GetPlayerPosition()) > 0.1f)
         {
             transform.Translate(GetDirectionVectorToPlayer() * Time.deltaTime * 50);

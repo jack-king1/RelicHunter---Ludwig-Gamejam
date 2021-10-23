@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     public GameObject notificationPanel;
     public Transform notificaitonPanelOffScreen;
     public Transform notificaitonPanelOnScreen;
+    public Text percentageText;
 
     public void SetAbilityUI(ABILITY type)
     {
@@ -55,5 +56,10 @@ public class UIManager : MonoBehaviour
     public void EndDisplayNotification()
     {
         LeanTween.moveLocalY(notificationPanel, notificaitonPanelOffScreen.localPosition.y, 1f).setEase(LeanTweenType.easeInSine);
+    }
+
+    public void SetPercentageText(float perc)
+    {
+        percentageText.text = (perc.ToString() + " %");
     }
 }

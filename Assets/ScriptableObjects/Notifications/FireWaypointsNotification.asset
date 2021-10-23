@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9799e9bdde46f9143a034237aa477a8c, type: 3}
   m_Name: FireWaypointsNotification
   m_EditorClassIdentifier: 
-  header: Controls
-  message: Follow the bonfires to find your escape
+  header: Bonfire
+  message: Follow the bonfires to find your escape!
   activationTime: 10
   displayTime: 7
