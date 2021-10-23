@@ -88,6 +88,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allAudio:
   - {fileID: 11400000, guid: 5109854ebd855ee4fbd6bcdb0c2c9665, type: 2}
+  - {fileID: 11400000, guid: cd1cf7259d03a7a419b21b3171b42719, type: 2}
+  - {fileID: 11400000, guid: 8ae0e85e1bc446445ab92dcb054a1422, type: 2}
+  - {fileID: 11400000, guid: 4b436d4eed3222b4d87d677c368b847c, type: 2}
+  - {fileID: 11400000, guid: 2dc0907f2c5d6f04ba511ddf82dd2aac, type: 2}
+  - {fileID: 11400000, guid: e86462c8d1e919c41bcf24e33bf11a1d, type: 2}
+  - {fileID: 11400000, guid: 4b923d1f782406949a60f23f9a32d7e0, type: 2}
 --- !u!1 &5752403669134013150
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +158,7 @@ GameObject:
   - component: {fileID: 5752403669158559089}
   - component: {fileID: 5752403669158559090}
   - component: {fileID: 5752403669158559095}
+  - component: {fileID: 1418770982}
   m_Layer: 0
   m_Name: ServiceLocator
   m_TagString: Untagged
@@ -193,7 +200,8 @@ MonoBehaviour:
   uiManager: {fileID: 0}
   audioManager: {fileID: 5752403668695261393}
   gameManager: {fileID: 5752403667948225426}
-  notificationManager: {fileID: 0}
+  notificationManager: {fileID: 5752403669134013148}
+  fileManager: {fileID: 1418770982}
 --- !u!114 &5752403669158559090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,3 +228,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+--- !u!114 &1418770982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5752403669158559091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8176d1fddb868394f9b4d0a0747c68ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

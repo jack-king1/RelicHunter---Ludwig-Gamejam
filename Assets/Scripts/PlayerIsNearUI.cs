@@ -38,7 +38,7 @@ public class PlayerIsNearUI : MonoBehaviour
 
         if (!isCurrentlyDisplayed)
         {
-            Debug.Log(Vector3.Distance(gameObject.transform.position, playerTransform.position));
+            //Debug.Log(Vector3.Distance(gameObject.transform.position, playerTransform.position));
             if (Vector3.Distance(gameObject.transform.position, playerTransform.position) < distanceToPlayer)
             {
                 LeanTween.cancel(gameObject);

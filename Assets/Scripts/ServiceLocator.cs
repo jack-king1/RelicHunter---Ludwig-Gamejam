@@ -12,6 +12,7 @@ public class ServiceLocator : MonoBehaviour
     public AudioManager audioManager;
     public GameManager gameManager;
     public NotificationManager notificationManager;
+    public DataManager fileManager;
 
     private void Awake()
     {
