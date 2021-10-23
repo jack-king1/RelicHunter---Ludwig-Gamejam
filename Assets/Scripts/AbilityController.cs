@@ -121,8 +121,13 @@ public class AbilityController : MonoBehaviour
                     {
                         if(teleportAbilityRef != null)
                         {
+                            ServiceLocator.Instance.playerManager.GetPlayer().GetComponent<PlayerController>().SetGrounded(false);
+                            Vector3 pos = new Vector3(teleportAbilityRef.transform.position.x, teleportAbilityRef.transform.position.y + 0.5f, 0);
+                            ServiceLocator.Instance.playerManager.SetPlayerPosition(pos);
+                            ServiceLocator.Instance.playerManager.SetPlayerSpeedY(0f);
                             Destroy(teleportAbilityRef);
                             teleportAbilityRef = null;
+                            SetActiveAbilityCooldown();
                         }
                         else
                         {
