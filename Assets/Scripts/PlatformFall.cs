@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D), typeof(Animation))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class PlatformFall : MonoBehaviour
 {
     [SerializeField] private float fallOffset = 100f;
@@ -20,6 +22,8 @@ public class PlatformFall : MonoBehaviour
         animation = GetComponent<Animation>();
         rb = GetComponent<Rigidbody2D>();
         origin = gameObject.transform.position;
+        rb.isKinematic = true;
+        animation.playAutomatically = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

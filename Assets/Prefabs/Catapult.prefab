@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1708213852571262316}
   - component: {fileID: 84522408412535933}
   - component: {fileID: 5871093925330454136}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: platform
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,13 +116,13 @@ HingeJoint2D:
   m_GameObject: {fileID: 3258636564452106463}
   m_Enabled: 1
   serializedVersion: 4
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -5.62, y: -0.12}
+  m_ConnectedAnchor: {x: 14.125052, y: 75.958694}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

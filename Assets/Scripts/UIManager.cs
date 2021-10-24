@@ -17,6 +17,12 @@ public class UIManager : MonoBehaviour
     public Transform notificaitonPanelOnScreen;
     public Text percentageText;
 
+    //Settings Menu
+    public GameObject SettingsMenuPanel;
+    public Transform SettingsMenuPanelOffScreen;
+    public Transform SettingsMenuPanelOnScreen;
+    private bool SettingsMenuActive = false;
+
     public void SetAbilityUI(ABILITY type)
     {
         switch (type)
@@ -61,5 +67,19 @@ public class UIManager : MonoBehaviour
     public void SetPercentageText(float perc)
     {
         percentageText.text = (perc.ToString() + " %");
+    }
+
+    public void DisplaySettingsMenu()
+    {
+        SettingsMenuActive = !SettingsMenuActive;
+
+        if(SettingsMenuActive)
+        {
+            LeanTween.moveLocalY(SettingsMenuPanel, SettingsMenuPanelOnScreen.localPosition.y, 0.4f).setEase(LeanTweenType.easeInSine).setIgnoreTimeScale(true);
+        }
+        else
+        {
+            LeanTween.moveLocalY(SettingsMenuPanel, SettingsMenuPanelOffScreen.localPosition.y, 0.4f).setEase(LeanTweenType.easeInSine).setIgnoreTimeScale(true);
+        }
     }
 }

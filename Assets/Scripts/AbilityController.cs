@@ -31,7 +31,7 @@ public class AbilityController : MonoBehaviour
     private bool teleportNotificationActivated = false;
     private bool weightNotificationActivated = false;
 
-    [SerializeField] private float teleportCooldown = 2f;
+    [SerializeField] private float teleportCooldown = 1.5f;
     private float teleportTimer = 0f;
 
 
@@ -77,7 +77,7 @@ public class AbilityController : MonoBehaviour
             SetActiveAbility();
         }
 
-        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3))
         {
             //Do ability
             if(abilityState != ABILITY.NONE)
@@ -175,7 +175,7 @@ public class AbilityController : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Mouse1))
         {
             if(activateAbilityIndicator)
             {

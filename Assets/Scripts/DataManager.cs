@@ -8,7 +8,8 @@ public class DataManager : MonoBehaviour
 
     public bool FileExists(string fileName)
     {
-        return File.Exists(fileName);
+        string path = Application.persistentDataPath + ("/" + fileName + ".json");
+        return File.Exists(path);
     }
 
     public void SaveIntoJson(string fileName, GameData gameData)
