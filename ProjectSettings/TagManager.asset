@@ -10,6 +10,7 @@ TagManager:
   - BoomerangAbility
   - VerticalFloor
   - Catapult
+  - Bonfire
   layers:
   - Default
   - TransparentFX

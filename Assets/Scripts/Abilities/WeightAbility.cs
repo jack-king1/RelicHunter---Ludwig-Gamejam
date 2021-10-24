@@ -19,6 +19,7 @@ public class WeightAbility : Ability
     private bool returningToPlayer = false;
 
     bool firstContact = false;
+    ParticleSystem ps;
 
     public override void DoAbility()
     {
@@ -27,8 +28,10 @@ public class WeightAbility : Ability
 
     private void Start()
     {
+        ps = GetComponentInChildren<ParticleSystem>();
         circleCollider = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
+        circleCollider.isTrigger = false;
         Fire();
     }
 
@@ -137,6 +140,13 @@ public class WeightAbility : Ability
         rb.mass = 0;
         rb.freezeRotation = true;
         circleCollider.isTrigger = true;
+        SetParticleLifetime();
         StartCoroutine("ReturnToPlayerCoroutine");
+    }
+
+    private void SetParticleLifetime()
+    {
+        var particleEmission = ps.enableEmission;
+        particleEmission = false;
     }
 }

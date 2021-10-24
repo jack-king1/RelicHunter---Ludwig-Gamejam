@@ -159,6 +159,7 @@ public class AbilityController : MonoBehaviour
                                 ServiceLocator.Instance.notificationManager.AddNotification(weightNotification);
                             }
                             weightAbilityRef = Instantiate(activeAbility, transform.position, Quaternion.identity);
+                            Debug.Break();
                             weightAbilityList.Add(weightAbilityRef);
                         }
                     }
@@ -277,9 +278,11 @@ public class AbilityController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("WeightAbility"))
+        
+        if (collision.gameObject.CompareTag("WeightAbility"))
         {
             Destroy(weightAbilityRef);
+            Debug.Log("Destroying Weight.");
             foreach (var weight in weightAbilityList)
             {
                 Destroy(weight);
@@ -293,6 +296,7 @@ public class AbilityController : MonoBehaviour
         if (collision.gameObject.CompareTag("WeightAbility"))
         {
             Destroy(weightAbilityRef);
+            Debug.Log("Destroying Weight.");
             foreach (var weight in weightAbilityList)
             {
                 Destroy(weight);

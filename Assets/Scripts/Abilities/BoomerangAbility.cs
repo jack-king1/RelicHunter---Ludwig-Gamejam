@@ -15,6 +15,7 @@ public class BoomerangAbility : Ability
     private Animator animator;
     private Camera mainCamera;
     private Vector3 directionVector;
+    private ParticleSystem ps;
     Rigidbody2D rb;
     Vector3 lastVelocity;
     AudioManager.AudioInstance soundInstance; 
@@ -27,13 +28,13 @@ public class BoomerangAbility : Ability
 
     private void Start()
     {
+        ps = GetComponentInChildren<ParticleSystem>();
         rb = GetComponent<Rigidbody2D>();
         ServiceLocator.Instance.cameraManager.SetDynamicCameraObject(this.gameObject);
         animator = GetComponent<Animator>();
         mainCamera = Camera.main;
         Fire();
         StartCoroutine("LifeTimeCountDown");
-
     }
 
     private void Update()
@@ -95,6 +96,7 @@ public class BoomerangAbility : Ability
                 rb.isKinematic = true;
                 animator.SetBool("Rotate", false);
                 soundInstance.AudioSource.Stop();
+                ps.Stop();
             }
         }
     }

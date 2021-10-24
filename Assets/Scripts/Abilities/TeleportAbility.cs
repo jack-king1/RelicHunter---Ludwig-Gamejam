@@ -12,6 +12,7 @@ public class TeleportAbility : Ability
     private Vector3 directionVector;
     private Rigidbody2D rb;
     private bool isGrounded = false;
+    ParticleSystem ps;
 
     public override void DoAbility()
     {
@@ -25,6 +26,7 @@ public class TeleportAbility : Ability
 
     private void Start()
     {
+        ps = GetComponentInChildren<ParticleSystem>();
         rb = GetComponent<Rigidbody2D>();
         Fire();
     }
@@ -48,6 +50,7 @@ public class TeleportAbility : Ability
     private void OnDestroy()
     {
         StopAllCoroutines();
+        ps.Stop();
         ServiceLocator.Instance.audioManager.PlaySound(ServiceLocator.Instance.playerManager.GetPlayer().gameObject, ServiceLocator.Instance.audioManager.GetSoundBank("Teleport"), 0.05f);
         ServiceLocator.Instance.playerManager.GetPlayer().GetComponent<AbilityController>().RemoveTeleportAbilityRef(this.gameObject);
     }
