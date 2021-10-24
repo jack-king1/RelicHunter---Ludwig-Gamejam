@@ -38,6 +38,8 @@ public class AbilityController : MonoBehaviour
     private GameObject teleportAbilityRef;
     private GameObject weightAbilityRef;
 
+    private List<GameObject> weightAbilityList = new List<GameObject>();
+
     private void Start()
     {
         activeAbility = boomerangAbility;
@@ -157,6 +159,7 @@ public class AbilityController : MonoBehaviour
                                 ServiceLocator.Instance.notificationManager.AddNotification(weightNotification);
                             }
                             weightAbilityRef = Instantiate(activeAbility, transform.position, Quaternion.identity);
+                            weightAbilityList.Add(weightAbilityRef);
                         }
                     }
                     else
@@ -277,6 +280,10 @@ public class AbilityController : MonoBehaviour
         if(collision.gameObject.CompareTag("WeightAbility"))
         {
             Destroy(weightAbilityRef);
+            foreach (var weight in weightAbilityList)
+            {
+                Destroy(weight);
+            }
             weightAbilityRef = null;
         }
     }
@@ -286,6 +293,10 @@ public class AbilityController : MonoBehaviour
         if (collision.gameObject.CompareTag("WeightAbility"))
         {
             Destroy(weightAbilityRef);
+            foreach (var weight in weightAbilityList)
+            {
+                Destroy(weight);
+            }
             weightAbilityRef = null;
         }
     }

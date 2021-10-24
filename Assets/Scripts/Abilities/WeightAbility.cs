@@ -55,6 +55,7 @@ public class WeightAbility : Ability
         return returningToPlayer;
     }
 
+
     void GetDirectionVector()
     {
         var mouseScreenPos = Input.mousePosition;
