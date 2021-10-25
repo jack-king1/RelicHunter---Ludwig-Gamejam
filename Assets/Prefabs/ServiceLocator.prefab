@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5752403667948225425}
   - component: {fileID: 5752403667948225426}
+  - component: {fileID: 1566035107}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -52,7 +53,25 @@ MonoBehaviour:
     masterVolume: 0
     percentageHighScore: 0
     teleportCount: 0
-  clock: {fileID: 0}
+    elapsedTimeHighScore: 0
+    teleportHighscore: 0
+  gameEnd: 0
+  clock: {fileID: 1566035107}
+--- !u!114 &1566035107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5752403667948225427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c3abcf1df5a6754da20558769b6f36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timePlayingStr: 
+  elapsedTime: 0
+  clockText: {fileID: 0}
 --- !u!1 &5752403668695261395
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,6 +124,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2dc0907f2c5d6f04ba511ddf82dd2aac, type: 2}
   - {fileID: 11400000, guid: e86462c8d1e919c41bcf24e33bf11a1d, type: 2}
   - {fileID: 11400000, guid: 4b923d1f782406949a60f23f9a32d7e0, type: 2}
+  - {fileID: 11400000, guid: a73e7cec12680ca4587c0a89f7a50dbf, type: 2}
+  - {fileID: 11400000, guid: 4089bb8bd8a398c46a3e3b188565ba28, type: 2}
+  - {fileID: 11400000, guid: c208d7de34e76b94facdce8cf771668b, type: 2}
 --- !u!1 &5752403669134013150
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class GameEnd : MonoBehaviour
         {
             Debug.Log("Game End Collided");
             //Disable player move/ability controls
-            ServiceLocator.Instance.gameManager.SetGameEnd();
+            ServiceLocator.Instance.gameManager.SetGameEnd(true);
             ServiceLocator.Instance.gameManager.SetGameEndHighScore();
             ServiceLocator.Instance.playerManager.GetPlayerAbilityController().abilityIndicator.SetActive(false);
             ServiceLocator.Instance.playerManager.GetPlayer().GetComponent<Animator>().SetBool("Walking", false);

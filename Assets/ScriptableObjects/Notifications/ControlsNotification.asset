@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: ControlsNotification
   m_EditorClassIdentifier: 
   header: Controls
-  message: Press 'TAB' to view the controls. Press 'ESC' to pause and view settings
-    menu.
+  message: Press 'TAB' to view Settings Menu - Click controls tab to view controls.
   activationTime: 5
   displayTime: 7

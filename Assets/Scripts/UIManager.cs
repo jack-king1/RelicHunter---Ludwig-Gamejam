@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,12 +41,16 @@ public class UIManager : MonoBehaviour
     //Teleport Counter
     public Text teleportCounterText;
 
+    //Settings Icon
+    public GameObject settingsCogUI;
+
     //EndGame/Play again menu.
     public CanvasGroup endGameCanvasUI;
-    //public GameObject EndGameMenuUI;
-    //public Text EndGameTitleUI;
-    //public Button EndGameButtonUI;
-    //public Button ResetGameButtonUI;
+
+    private void TurnoffGameUI()
+    {
+        endGameCanvasUI.gameObject.SetActive(true);
+    }
 
     public void SetAbilityUI(ABILITY type)
     {
@@ -145,6 +150,7 @@ public class UIManager : MonoBehaviour
         abilityMenuUI.SetActive(false);
         notificationPanel.SetActive(false);
         hudDisplayUI.SetActive(false);
+        settingsCogUI.SetActive(false);
     }
 
     public void EnableAllGameUI()
@@ -152,19 +158,34 @@ public class UIManager : MonoBehaviour
         abilityMenuUI.SetActive(true);
         notificationPanel.SetActive(true);
         hudDisplayUI.SetActive(true);
+        settingsCogUI.SetActive(true);
     }
 
     public void FadeInEndScreen()
     {
+        endGameCanvasUI.gameObject.SetActive(true);
         LeanTween.alphaCanvas(endGameCanvasUI, 1f, 5f);
         endGameCanvasUI.interactable = true;
         endGameCanvasUI.blocksRaycasts = true;
+
     }
 
     public void FadeOutEndScreen()
     {
-        LeanTween.alphaCanvas(endGameCanvasUI, 0f, 2f);
+        LeanTween.alphaCanvas(endGameCanvasUI, 0f, 0.5f).setOnComplete(TurnOffGameEndUI);
         endGameCanvasUI.interactable = false;
         endGameCanvasUI.blocksRaycasts = false;
+    }
+
+    private void TurnOffGameEndUI()
+    {
+        endGameCanvasUI.gameObject.SetActive(false);
+    }
+
+    public void UIButtonClickAudio()
+    {
+        AudioManager.AudioInstance audio = ServiceLocator.Instance.audioManager.PlaySound
+            (this.gameObject, ServiceLocator.Instance.audioManager.GetSoundBank("uibutton"), 0.015f);
+        audio.AudioSource.ignoreListenerPause = true;
     }
 }

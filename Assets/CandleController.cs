@@ -61,4 +61,9 @@ public class CandleController : MonoBehaviour
         }
         yield return null;
     }
+
+    public Light2D GetCandleLight()
+    {
+        return playerLight;
+    }
 }

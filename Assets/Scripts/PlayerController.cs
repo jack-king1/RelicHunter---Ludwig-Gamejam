@@ -133,4 +133,13 @@ public class PlayerController : MonoBehaviour
             playerCandle.transform.position = candleRight.position;
         }
     }
+
+    public void ResetCandleController()
+    {
+        CandleController cc = GetComponent<CandleController>();
+
+        cc.minCandleRadius = 1;
+        cc.candleReduceSpeed = 0.4f;
+        cc.GetCandleLight().pointLightOuterRadius = 6;
+    }
 }

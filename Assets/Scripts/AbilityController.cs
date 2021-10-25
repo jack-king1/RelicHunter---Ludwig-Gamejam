@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public enum ABILITY
 {
@@ -44,6 +45,8 @@ public class AbilityController : MonoBehaviour
 
     private int teleportCount = 0;
 
+    bool isOver = false;
+
     private void Start()
     {
         activeAbility = boomerangAbility;
@@ -68,6 +71,11 @@ public class AbilityController : MonoBehaviour
             return;
         }
 
+        if(ServiceLocator.Instance.gameManager.GetPaused())
+        {
+            return;
+        }
+
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             abilityState = ABILITY.BOOMERANG;
@@ -89,7 +97,7 @@ public class AbilityController : MonoBehaviour
             SetActiveAbility();
         }
 
-        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.E) || (Input.GetKeyDown(KeyCode.Mouse0) && !isOver )|| Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3))
         {
             //Do ability
             if(abilityState != ABILITY.NONE)
@@ -335,5 +343,15 @@ public class AbilityController : MonoBehaviour
     {
         teleportCount = count;
         ServiceLocator.Instance.uiManager.SetTeleportCountText(count);
+    }
+
+    public void OverUI()
+    {
+        isOver = true;
+    }
+
+    public void OffUI()
+    {
+        isOver = false;
     }
 }

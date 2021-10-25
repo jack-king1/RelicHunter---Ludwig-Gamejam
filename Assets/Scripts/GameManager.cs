@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.InteropServices;
 
 public class GameManager : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("File doent exist!");
             ServiceLocator.Instance.playerManager.SetPlayerPosition(new Vector3(0,0,0));
+            ServiceLocator.Instance.uiManager.SetMusicSlider(1);
+            ServiceLocator.Instance.uiManager.SetVolumeSlider(1);
         }
         clock.BeginTimer(gameData.elapsedTime);
     }
@@ -44,24 +47,28 @@ public class GameManager : MonoBehaviour
         return gameEnd;
     }
 
-    public void SetGameEnd()
+    public void SetGameEnd(bool end)
     {
-        gameEnd = true;
+        gameEnd = end;
     }
+
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            
-            if(gamePaused)
+            if (gamePaused)
             {
-                ResumeGame();    
+                ResumeGame();
             }
             else
             {
                 PauseGame();
             }
         }
+
+
+
 
         if (Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.AltGr) || Input.GetKeyDown(KeyCode.RightAlt))
         {
@@ -97,13 +104,15 @@ public class GameManager : MonoBehaviour
     {
         ApplyGameData();
     }
-
     public void PauseGame()
     {
         Time.timeScale = 0;
         AudioListener.pause = true;
         gamePaused = true;
         ServiceLocator.Instance.uiManager.DisplaySettingsMenu("PauseGame");
+        AudioManager.AudioInstance audio = ServiceLocator.Instance.audioManager.PlaySound
+            (this.gameObject,ServiceLocator.Instance.audioManager.GetSoundBank("menudown"),0.02f);
+        audio.AudioSource.ignoreListenerPause = true;
     }
 
     public void ResumeGame()
@@ -112,6 +121,9 @@ public class GameManager : MonoBehaviour
         AudioListener.pause = false;
         gamePaused = false;
         ServiceLocator.Instance.uiManager.DisplaySettingsMenu("ResumeGame");
+        AudioManager.AudioInstance audio = ServiceLocator.Instance.audioManager.PlaySound
+            (this.gameObject, ServiceLocator.Instance.audioManager.GetSoundBank("menuup"), 0.02f);
+        audio.AudioSource.ignoreListenerPause = true;
     }
 
     public void ExitGame()
@@ -125,6 +137,10 @@ public class GameManager : MonoBehaviour
 
 #if UNITY_STANDALONE_WIN
         Application.Quit();
+#endif
+
+#if UNITY_WEBGL
+        openWindow("https://itch.io/jam/ludwig-2021");
 #endif
 
     }
@@ -172,4 +188,19 @@ public class GameManager : MonoBehaviour
     {
         return gamePaused;
     }
+
+    public void TogglePaused()
+    {
+        if(gamePaused)
+        {
+            ResumeGame();
+        }
+        else
+        {
+            PauseGame();
+        }
+    }
+
+    [DllImport("__Internal")]
+    private static extern void openWindow(string url);
 }
