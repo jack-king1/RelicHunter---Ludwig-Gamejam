@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 996136220}
   - component: {fileID: 996136219}
   - component: {fileID: 996136218}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BonfireParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4844,7 +4844,7 @@ GameObject:
   - component: {fileID: 5790726100306147303}
   - component: {fileID: 8039774179869773256}
   - component: {fileID: -6243085375036158805}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BonfirePrefab
   m_TagString: Bonfire
   m_Icon: {fileID: 0}

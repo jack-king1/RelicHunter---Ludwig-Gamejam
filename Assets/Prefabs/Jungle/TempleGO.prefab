@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6699518523568395022}
   m_Layer: 7
   m_Name: tile_temple_23
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6699518523568395020}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.733, y: 0.642, z: 0}
+  m_LocalPosition: {x: 0.7320005, y: 9.424997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6699518524991095352}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6699518524310639583}
   m_Layer: 7
   m_Name: tile_temple_12
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6699518524310639581}
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: -0.599, y: 0.257, z: 0}
+  m_LocalPosition: {x: -0.6, y: 9.04, z: 0}
   m_LocalScale: {x: 1.4296, y: 1.4296, z: 1.4296}
   m_Children: []
   m_Father: {fileID: 6699518524991095352}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 1988651722}
   m_Layer: 7
   m_Name: tile_jungle_treelimb
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,7 +192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6699518524671070833}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.532, z: 0}
+  m_LocalPosition: {x: -0.0009994507, y: 9.314997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6699518524991095352}
@@ -259,7 +259,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 6699518524671070833}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b44be7b36b7be0142a7362dfcc9accc1, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 6699518524671870346}
   m_Layer: 7
   m_Name: tile_temple_25
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -394,7 +394,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6699518524671870344}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.879, y: 0, z: 0}
+  m_LocalPosition: {x: 0.87800056, y: 8.782997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6699518524991095352}
@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 6699518524820329931}
   m_Layer: 7
   m_Name: tile_temple_20
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -477,7 +477,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6699518524820329929}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.0009994507, y: 8.782997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6699518524991095352}
@@ -546,7 +546,7 @@ GameObject:
   - component: {fileID: 6699518524889024586}
   m_Layer: 0
   m_Name: TempleGO
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -618,7 +618,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.011707544, y: 0.122810364}
+  m_Offset: {x: -0.011707544, y: 8.903484}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -629,7 +629,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4508958, y: 1.5455627}
+  m_Size: {x: 1.4508958, y: 1.4992447}
   m_EdgeRadius: 0
 --- !u!61 &1805466240
 BoxCollider2D:
@@ -644,7 +644,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.9963119, y: 0.10334015}
+  m_Offset: {x: 0.9963119, y: 8.84864}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -655,7 +655,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5727973, y: 1.2066803}
+  m_Size: {x: 0.5727973, y: 1.365036}
   m_EdgeRadius: 0
 --- !u!1 &6699518525524951425
 GameObject:
@@ -669,7 +669,7 @@ GameObject:
   - component: {fileID: 6699518525524951427}
   m_Layer: 7
   m_Name: tile_temple_12 (1)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -682,7 +682,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6699518525524951425}
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: 0.586, y: 0.269, z: 0}
+  m_LocalPosition: {x: 0.5850006, y: 9.051997, z: 0}
   m_LocalScale: {x: 1.4296, y: 1.4296, z: 1.4296}
   m_Children: []
   m_Father: {fileID: 6699518524991095352}
@@ -753,11 +753,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2330274028459616836, guid: 692359f83886a7541bfecdfa5ee52d47, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.0009994507
       objectReference: {fileID: 0}
     - target: {fileID: 2330274028459616836, guid: 692359f83886a7541bfecdfa5ee52d47, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.34
+      value: 10.122997
       objectReference: {fileID: 0}
     - target: {fileID: 2330274028459616836, guid: 692359f83886a7541bfecdfa5ee52d47, type: 3}
       propertyPath: m_LocalPosition.z

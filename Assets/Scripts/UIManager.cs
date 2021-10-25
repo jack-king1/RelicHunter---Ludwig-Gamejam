@@ -22,6 +22,19 @@ public class UIManager : MonoBehaviour
     public Transform SettingsMenuPanelOffScreen;
     public Transform SettingsMenuPanelOnScreen;
     private bool SettingsMenuActive = false;
+    public Text timeHighscore;
+    public Text percentageHighscore;
+    public Text teleportHighscore;
+
+    //Timer
+    public Text timerText;
+
+    //MenuSlider
+    public Slider soundSlider;
+    public Slider musicSlider;
+
+    //Teleport Counter
+    public Text teleportCounterText;
 
     public void SetAbilityUI(ABILITY type)
     {
@@ -81,5 +94,37 @@ public class UIManager : MonoBehaviour
         {
             LeanTween.moveLocalY(SettingsMenuPanel, SettingsMenuPanelOffScreen.localPosition.y, 0.4f).setEase(LeanTweenType.easeInSine).setIgnoreTimeScale(true);
         }
+    }
+
+    public void SetTimerText(float minutes, float seconds)
+    {
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    public Text GetTimerTextReference()
+    {
+        return timerText;
+    }
+
+    public void SetVolumeSlider(float value)
+    {
+        soundSlider.value = value;
+    }
+
+    public void SetMusicSlider(float value)
+    {
+        musicSlider.value = value;
+    }
+
+    public void SetTeleportCountText(int value)
+    {
+        teleportCounterText.text = "TP: " + value.ToString();
+    }
+
+    public void SetHighScore(string eleapsedTime, int percentage, int teleportCount)
+    {
+        timeHighscore.text = eleapsedTime;
+        percentageHighscore.text = percentage.ToString();
+        teleportHighscore.text = teleportCount.ToString();
     }
 }

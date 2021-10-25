@@ -11,6 +11,8 @@ TagManager:
   - VerticalFloor
   - Catapult
   - Bonfire
+  - PlayerCandle
+  - DisableBox
   layers:
   - Default
   - TransparentFX
@@ -25,8 +27,8 @@ TagManager:
   - WeightAbility
   - VerticalWall
   - Catapult
-  - 
-  - 
+  - PlayerCandle
+  - Bonfire
   - 
   - 
   - 

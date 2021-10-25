@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public GameData gameData;
 
     private bool gamePaused = false;
+    public Clock clock;
 
     private void Start()
     {
@@ -16,13 +17,25 @@ public class GameManager : MonoBehaviour
         {
             gameData = ServiceLocator.Instance.fileManager.LoadJson<GameData>("GAMEDATA");
             ServiceLocator.Instance.playerManager.SetPlayerPosition(gameData.playerPos);
+            clock.elapsedTime = gameData.elapsedTime;
+            ServiceLocator.Instance.uiManager.SetMusicSlider(gameData.musicVolume);
+            ServiceLocator.Instance.uiManager.SetVolumeSlider(gameData.masterVolume);
+            ServiceLocator.Instance.playerManager.GetPlayer().GetComponent<AbilityController>().SetTeleportCount(gameData.teleportCount);
 
+            ServiceLocator.Instance.uiManager.SetHighScore(clock.GetTimeFormatString(gameData.elapsedTimeHighScore), 
+                gameData.percentageHighScore, gameData.teleportHighscore);
         }
         else
         {
             Debug.Log("File doent exist!");
             ServiceLocator.Instance.playerManager.SetPlayerPosition(new Vector3(0,0,0));
         }
+        clock.BeginTimer(gameData.elapsedTime);
+    }
+
+    public void SetPercentageComplete(int percentage)
+    {
+        gameData.currentPercentage = percentage;
     }
 
     private void Update()
@@ -45,7 +58,13 @@ public class GameManager : MonoBehaviour
             ApplyGameData();
         }
 
-        
+        if(gameData.currentPercentage > gameData.percentageHighScore)
+        {
+            gameData.elapsedTimeHighScore = clock.elapsedTime;
+            gameData.percentageHighScore = gameData.currentPercentage;
+            gameData.teleportHighscore = gameData.teleportCount;
+            ServiceLocator.Instance.uiManager.SetHighScore(clock.timePlayingStr, gameData.currentPercentage, gameData.teleportCount);
+        }
     }
 
     private void OnApplicationQuit()
@@ -71,7 +90,7 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
-
+        SetPlayerPosition();
         ApplyGameData();
 
 #if UNITY_EDITOR
@@ -86,20 +105,38 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
+        ServiceLocator.Instance.playerManager.GetPlayer().GetComponent<AbilityController>().SetTeleportCount(0);
+        clock.elapsedTime = 0;
         ServiceLocator.Instance.playerManager.SetPlayerPosition(new Vector3(0,0,0));
         gameData.playerPos = new Vector3(0, 0, 0);
+        gameData.elapsedTime = 0f;
+        gameData.teleportCount = 0;
         ServiceLocator.Instance.fileManager.SaveIntoJson("GAMEDATA", gameData);
         ResumeGame();
     }
 
     public void ApplyGameData()
     {
-        gameData.playerPos = ServiceLocator.Instance.playerManager.GetPlayerPosition();
         ServiceLocator.Instance.fileManager.SaveIntoJson("GAMEDATA",gameData);
     }
 
-    public void SaveHighscore()
+    public void SetPlayerPosition()
     {
+        gameData.playerPos = ServiceLocator.Instance.playerManager.GetPlayerPosition();
+    }
 
+    public void SetTeleportCount(int count)
+    {
+        gameData.teleportCount = count;
+    }
+
+    public void SetVolume(float vol)
+    {
+        gameData.masterVolume = vol;
+    }
+
+    public void SetMusicVolume(float vol)
+    {
+        gameData.musicVolume = vol;
     }
 }

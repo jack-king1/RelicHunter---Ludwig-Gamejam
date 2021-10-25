@@ -4866,7 +4866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalLifetime: 15
   thrust: 500
-  downwardThrust: 15000
+  downwardThrust: 1500
   massAfterWait: 14
   gravityScaleAfterWait: 10
   waitTimeUntillAddForce: 1

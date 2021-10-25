@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.Audio;
 
 //https://gist.github.com/phosphoer/19a72675fed68c564bfd2bf3f7167575
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
+    public AudioMixer MasterMixer;
 
     private Dictionary<GameObject, AudioGroup> _audioGroups = new Dictionary<GameObject, AudioGroup>();
     public List<SoundBank> allAudio = new List<SoundBank>();

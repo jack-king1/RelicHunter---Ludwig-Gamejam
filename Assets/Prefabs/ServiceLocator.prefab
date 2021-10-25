@@ -43,6 +43,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16779b6f8e81ba443a54a9fd81429552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameData:
+    playerPos: {x: 0, y: 0, z: 0}
+    elapsedTime: 0
+    currentPercentage: 0
+    muted: 0
+    musicVolume: 0
+    masterVolume: 0
+    percentageHighScore: 0
+    teleportCount: 0
+  clock: {fileID: 0}
 --- !u!1 &5752403668695261395
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52621ef72cc7f9b4799af66504858a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MasterMixer: {fileID: 24100000, guid: 86cd10b75f5c57f45b12019ffab10d79, type: 2}
   allAudio:
   - {fileID: 11400000, guid: 5109854ebd855ee4fbd6bcdb0c2c9665, type: 2}
   - {fileID: 11400000, guid: cd1cf7259d03a7a419b21b3171b42719, type: 2}

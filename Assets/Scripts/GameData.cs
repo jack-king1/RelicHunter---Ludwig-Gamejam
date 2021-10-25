@@ -5,10 +5,16 @@ using UnityEngine;
 public class GameData 
 {
     public Vector3 playerPos;
-    public float previousHighScore;
-    public float timeElapsed;
+    public float elapsedTime;
+    public int currentPercentage;
 
     public bool muted;
-    public float musicVolume;
-    public float masterVolume;
+    public float musicVolume = 1;
+    public float masterVolume = 1;
+    public int percentageHighScore;
+    public int teleportCount;
+    public float elapsedTimeHighScore;
+    public int teleportHighscore;
+
+    //highscore 
 }

@@ -40,6 +40,10 @@ public class AbilityController : MonoBehaviour
 
     private List<GameObject> weightAbilityList = new List<GameObject>();
 
+    private bool abilitiesDisabled = false;
+
+    private int teleportCount = 0;
+
     private void Start()
     {
         activeAbility = boomerangAbility;
@@ -56,6 +60,12 @@ public class AbilityController : MonoBehaviour
             {
                 teleportTimer = 0;
             }
+        }
+
+        if(abilitiesDisabled)
+        {
+            abilityIndicator.SetActive(false);
+            return;
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha1))
@@ -95,7 +105,8 @@ public class AbilityController : MonoBehaviour
                         Destroy(teleportAbilityRef);
                         teleportAbilityRef = null;
                         SetActiveAbilityCooldown();
-                        
+                        IncreaseTeleportCount();
+
                     }
                     else if(weightAbilityRef != null && abilityState == ABILITY.WEIGHT && weightAbilityRef.GetComponent<WeightAbility>().GetReturning() == false)
                     {
@@ -130,6 +141,7 @@ public class AbilityController : MonoBehaviour
                             Destroy(teleportAbilityRef);
                             teleportAbilityRef = null;
                             SetActiveAbilityCooldown();
+                            
                         }
                         else
                         {
@@ -148,6 +160,7 @@ public class AbilityController : MonoBehaviour
                     {
                         if (weightAbilityRef != null)
                         {
+                            
                             weightAbilityRef.GetComponent<WeightAbility>().ReturnToPlayer();
                             weightAbilityRef = null;
                         }
@@ -159,7 +172,6 @@ public class AbilityController : MonoBehaviour
                                 ServiceLocator.Instance.notificationManager.AddNotification(weightNotification);
                             }
                             weightAbilityRef = Instantiate(activeAbility, transform.position, Quaternion.identity);
-                            Debug.Break();
                             weightAbilityList.Add(weightAbilityRef);
                         }
                     }
@@ -289,6 +301,12 @@ public class AbilityController : MonoBehaviour
             }
             weightAbilityRef = null;
         }
+
+
+        if (collision.gameObject.CompareTag("DisableBox"))
+        {
+            abilitiesDisabled = !abilitiesDisabled;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -303,5 +321,19 @@ public class AbilityController : MonoBehaviour
             }
             weightAbilityRef = null;
         }
+
+    }
+
+    public void IncreaseTeleportCount()
+    {
+        teleportCount++;
+        ServiceLocator.Instance.gameManager.SetTeleportCount(teleportCount);
+        ServiceLocator.Instance.uiManager.SetTeleportCountText(teleportCount);
+    }
+
+    public void SetTeleportCount(int count)
+    {
+        teleportCount = count;
+        ServiceLocator.Instance.uiManager.SetTeleportCountText(count);
     }
 }

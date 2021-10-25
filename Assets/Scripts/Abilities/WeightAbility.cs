@@ -31,7 +31,6 @@ public class WeightAbility : Ability
         ps = GetComponentInChildren<ParticleSystem>();
         circleCollider = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
-        circleCollider.isTrigger = false;
         Fire();
     }
 

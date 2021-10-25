@@ -21,5 +21,6 @@ public class PercentageCompleteController : MonoBehaviour
         percentageComplete = Mathf.Clamp(percentageComplete, 0, 100);
         percentageComplete = Mathf.RoundToInt(percentageComplete);
         ServiceLocator.Instance.uiManager.SetPercentageText(percentageComplete);
+        ServiceLocator.Instance.gameManager.SetPercentageComplete((int)percentageComplete);
     }
 }
