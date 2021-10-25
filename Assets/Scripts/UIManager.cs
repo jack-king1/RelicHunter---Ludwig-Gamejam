@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public GameObject abilityMenuUI;
     public GameObject boomerangAbilityUI;
     public GameObject teleportAbilityUI;
     public GameObject weightAbilityUI;
@@ -26,6 +27,9 @@ public class UIManager : MonoBehaviour
     public Text percentageHighscore;
     public Text teleportHighscore;
 
+    //HUDMenu
+    public GameObject hudDisplayUI;
+
     //Timer
     public Text timerText;
 
@@ -35,6 +39,13 @@ public class UIManager : MonoBehaviour
 
     //Teleport Counter
     public Text teleportCounterText;
+
+    //EndGame/Play again menu.
+    public CanvasGroup endGameCanvasUI;
+    //public GameObject EndGameMenuUI;
+    //public Text EndGameTitleUI;
+    //public Button EndGameButtonUI;
+    //public Button ResetGameButtonUI;
 
     public void SetAbilityUI(ABILITY type)
     {
@@ -127,5 +138,33 @@ public class UIManager : MonoBehaviour
         timeHighscore.text = eleapsedTime;
         percentageHighscore.text = percentage.ToString();
         teleportHighscore.text = teleportCount.ToString();
+    }
+
+    public void DisableAllGameUI()
+    {
+        abilityMenuUI.SetActive(false);
+        notificationPanel.SetActive(false);
+        hudDisplayUI.SetActive(false);
+    }
+
+    public void EnableAllGameUI()
+    {
+        abilityMenuUI.SetActive(true);
+        notificationPanel.SetActive(true);
+        hudDisplayUI.SetActive(true);
+    }
+
+    public void FadeInEndScreen()
+    {
+        LeanTween.alphaCanvas(endGameCanvasUI, 1f, 5f);
+        endGameCanvasUI.interactable = true;
+        endGameCanvasUI.blocksRaycasts = true;
+    }
+
+    public void FadeOutEndScreen()
+    {
+        LeanTween.alphaCanvas(endGameCanvasUI, 0f, 2f);
+        endGameCanvasUI.interactable = false;
+        endGameCanvasUI.blocksRaycasts = false;
     }
 }

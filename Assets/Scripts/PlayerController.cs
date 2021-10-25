@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     public BoxCollider2D facingLeftCollider;
     public BoxCollider2D facingRightCollider;
 
+    public Transform candleLeft;
+    public Transform candleRight;
+    public GameObject playerCandle;
+
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
@@ -26,6 +30,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if(ServiceLocator.Instance.gameManager.GetGameEnd())
+        {
+            return;
+        }
+
         if(Input.GetKeyDown(KeyCode.A))
         {
             if(!spriteRenderer.flipX)
@@ -33,6 +42,7 @@ public class PlayerController : MonoBehaviour
                 spriteRenderer.flipX = true;
                 facingLeftCollider.enabled = true;
                 facingRightCollider.enabled = false;
+                SetCandlePosition();
             }
         }
         else if(Input.GetKeyDown(KeyCode.D))
@@ -42,6 +52,7 @@ public class PlayerController : MonoBehaviour
                 spriteRenderer.flipX = false;
                 facingLeftCollider.enabled = false;
                 facingRightCollider.enabled = true;
+                SetCandlePosition();
             }
         }
 
@@ -109,5 +120,17 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D GetRigidBody()
     {
         return rb;
+    }
+
+    private void SetCandlePosition()
+    {
+        if(facingLeftCollider.enabled)
+        {
+            playerCandle.transform.position = candleLeft.position;
+        }
+        else
+        {
+            playerCandle.transform.position = candleRight.position;
+        }
     }
 }

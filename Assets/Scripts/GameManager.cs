@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public GameData gameData;
 
     private bool gamePaused = false;
+    [SerializeField] private bool gameEnd = false;
     public Clock clock;
 
     private void Start()
@@ -38,6 +39,15 @@ public class GameManager : MonoBehaviour
         gameData.currentPercentage = percentage;
     }
 
+    public bool GetGameEnd()
+    {
+        return gameEnd;
+    }
+
+    public void SetGameEnd()
+    {
+        gameEnd = true;
+    }
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -65,6 +75,22 @@ public class GameManager : MonoBehaviour
             gameData.teleportHighscore = gameData.teleportCount;
             ServiceLocator.Instance.uiManager.SetHighScore(clock.timePlayingStr, gameData.currentPercentage, gameData.teleportCount);
         }
+    }
+
+    public void SetGameEndHighScore()
+    {
+        if(gameData.currentPercentage == gameData.percentageHighScore)
+        {
+            if (gameData.elapsedTime < gameData.elapsedTimeHighScore)
+            {
+                gameData.elapsedTimeHighScore = gameData.elapsedTime;
+            }
+        }
+        else
+        {
+            gameData.elapsedTimeHighScore = gameData.elapsedTime;
+        }
+
     }
 
     private void OnApplicationQuit()
@@ -118,6 +144,7 @@ public class GameManager : MonoBehaviour
 
     public void ApplyGameData()
     {
+        SetPlayerPosition();
         ServiceLocator.Instance.fileManager.SaveIntoJson("GAMEDATA",gameData);
     }
 

@@ -4,13 +4,29 @@ using UnityEngine;
 
 public class GameEnd : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("GameEnd"))
         {
-            //save game
+            Debug.Log("Game End Collided");
+            //Disable player move/ability controls
+            ServiceLocator.Instance.gameManager.SetGameEnd();
+            ServiceLocator.Instance.gameManager.SetGameEndHighScore();
+            ServiceLocator.Instance.playerManager.GetPlayerAbilityController().abilityIndicator.SetActive(false);
+            ServiceLocator.Instance.playerManager.GetPlayer().GetComponent<Animator>().SetBool("Walking", false);
+            ServiceLocator.Instance.playerManager.GetPlayer().GetComponent<CandleController>().candleReduceSpeed = 4f;
+            ServiceLocator.Instance.playerManager.GetPlayer().GetComponent<CandleController>().minCandleRadius = 0f;
+            ServiceLocator.Instance.playerManager.GetPlayer().GetComponentInChildren<ParticleSystem>().Stop();
+            ServiceLocator.Instance.uiManager.DisableAllGameUI();
+            ServiceLocator.Instance.uiManager.FadeInEndScreen();
 
-            //ServiceLocator.Instance.gameManager.SetHighscore();
+
+            //Display win screen
+            //Display highscore
+            //start credits
+            //Reset player current pos to start
+            //save data
+            ServiceLocator.Instance.gameManager.ApplyGameData();
         }
     }
 }
