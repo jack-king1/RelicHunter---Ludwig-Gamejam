@@ -29,7 +29,7 @@ public class Clock : MonoBehaviour
     public string GetTimeFormatString(float elapsed)
     {
         TimeSpan temp = TimeSpan.FromSeconds(elapsed);
-        string tempString = timePlaying.ToString("hh':'mm':'ss'.'ff");
+        string tempString = temp.ToString("hh':'mm':'ss'.'ff");
         return tempString;
     }
 
@@ -40,6 +40,10 @@ public class Clock : MonoBehaviour
             elapsedTime += Time.deltaTime;
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
             timePlayingStr = timePlaying.ToString("hh':'mm':'ss'.'ff");
+            if(clockText == null)
+            {
+                clockText = ServiceLocator.Instance.uiManager.GetTimerTextReference();
+            }
             clockText.text = timePlayingStr;
             ServiceLocator.Instance.gameManager.gameData.elapsedTime = elapsedTime;
             yield return null;

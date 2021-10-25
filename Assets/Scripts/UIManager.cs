@@ -82,8 +82,9 @@ public class UIManager : MonoBehaviour
         percentageText.text = (perc.ToString() + " %");
     }
 
-    public void DisplaySettingsMenu()
+    public void DisplaySettingsMenu(string functionName)
     {
+        Debug.Log("Called From: " + functionName);
         SettingsMenuActive = !SettingsMenuActive;
 
         if(SettingsMenuActive)

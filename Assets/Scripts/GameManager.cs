@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         AudioListener.pause = true;
         gamePaused = true;
-        ServiceLocator.Instance.uiManager.DisplaySettingsMenu();
+        ServiceLocator.Instance.uiManager.DisplaySettingsMenu("PauseGame");
     }
 
     public void ResumeGame()
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         AudioListener.pause = false;
         gamePaused = false;
-        ServiceLocator.Instance.uiManager.DisplaySettingsMenu();
+        ServiceLocator.Instance.uiManager.DisplaySettingsMenu("ResumeGame");
     }
 
     public void ExitGame()
@@ -113,6 +113,7 @@ public class GameManager : MonoBehaviour
         gameData.teleportCount = 0;
         ServiceLocator.Instance.fileManager.SaveIntoJson("GAMEDATA", gameData);
         ResumeGame();
+        Debug.Log("ResetGame Is Being Called");
     }
 
     public void ApplyGameData()
@@ -138,5 +139,10 @@ public class GameManager : MonoBehaviour
     public void SetMusicVolume(float vol)
     {
         gameData.musicVolume = vol;
+    }
+
+    public bool GetPaused()
+    {
+        return gamePaused;
     }
 }
