@@ -196,14 +196,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 496660233, guid: 0aae0697317c8454d91e725738e1cd3f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1890049880}
-    - target: {fileID: 1764128528, guid: 0aae0697317c8454d91e725738e1cd3f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1890049880}
+    - target: {fileID: 590857679, guid: 0aae0697317c8454d91e725738e1cd3f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 10.200012
+      objectReference: {fileID: 0}
     - target: {fileID: 3299052288658371979, guid: 0aae0697317c8454d91e725738e1cd3f, type: 3}
       propertyPath: m_Name
       value: TitleScreen

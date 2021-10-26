@@ -51,9 +51,6 @@ public class UIManager : MonoBehaviour
     public GameObject ControlsMenuUI;
     public GameObject SettingsMenuUI;
 
-    //All game UI
-    public GameObject gameUIHolder;
-
     public CanvasGroup fadePanelCanvas;
 
     private void Start()
@@ -64,12 +61,16 @@ public class UIManager : MonoBehaviour
 
     private void TurnOffGameUI()
     {
-        gameUIHolder.SetActive(false);
-    }
-
+        hudDisplayUI.SetActive(false);
+        abilityMenuUI.SetActive(false);
+        settingsCogUI.SetActive(false);
+    }   
     private void TurnOnGameUI()
     {
-        gameUIHolder.SetActive(true);
+        //gameUIHolder.SetActive(true);
+        hudDisplayUI.SetActive(true);
+        abilityMenuUI.SetActive(true);
+        settingsCogUI.SetActive(true);
     }
 
     public void SetAbilityUI(ABILITY type)
@@ -256,10 +257,5 @@ public class UIManager : MonoBehaviour
             SettingsMenuUI.SetActive(true);
             ControlsMenuUI.SetActive(false);
         }
-    }
-
-    public void EnableGameUI()
-    {
-        gameUIHolder.SetActive(true);
     }
 }

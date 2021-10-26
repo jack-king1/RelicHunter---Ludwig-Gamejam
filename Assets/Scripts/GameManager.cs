@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public GameData gameData;
 
-    private bool gamePaused = false;
+    [SerializeField] private bool gamePaused = false;
     [SerializeField] private bool gameEnd = false;
     public Clock clock;
 
