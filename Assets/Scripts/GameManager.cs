@@ -12,6 +12,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool gameEnd = false;
     public Clock clock;
 
+    private void OnLevelWasLoaded(int level)
+    {
+        Time.timeScale = 1;
+        AudioListener.pause = false;
+    }
+
     private void Start()
     {
         ServiceLocator.Instance.audioManager.FadeInSound(this.gameObject,ServiceLocator.Instance.audioManager.GetSoundBank("GameMusic"),10,0.007f);

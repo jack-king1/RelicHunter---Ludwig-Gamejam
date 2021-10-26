@@ -20,6 +20,13 @@ public class TitleSceneController : MonoBehaviour
 
     bool changeScene = false;
 
+    public void OnLevelWasLoaded(int level)
+    {
+        Time.timeScale = 1;
+        //bonfireSound.Play();
+        bonfireSound.ignoreListenerPause = true;
+    }
+
     private void Start()
     {
         buttonsCanvas.alpha = 0;
