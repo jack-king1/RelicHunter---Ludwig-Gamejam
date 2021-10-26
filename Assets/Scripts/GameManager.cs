@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.InteropServices;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -128,20 +129,11 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
+        Time.timeScale = 1;
         SetPlayerPosition();
         ApplyGameData();
 
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
-
-#if UNITY_STANDALONE_WIN
-        Application.Quit();
-#endif
-
-#if UNITY_WEBGL
-        openWindow("https://itch.io/jam/ludwig-2021");
-#endif
+        SceneManager.LoadScene(0);
 
     }
 
@@ -153,7 +145,7 @@ public class GameManager : MonoBehaviour
         gameData.playerPos = new Vector3(0, 0, 0);
         gameData.elapsedTime = 0f;
         gameData.teleportCount = 0;
-        ServiceLocator.Instance.fileManager.SaveIntoJson("GAMEDATA", gameData);
+        ApplyGameData();
         ResumeGame();
         Debug.Log("ResetGame Is Being Called");
     }

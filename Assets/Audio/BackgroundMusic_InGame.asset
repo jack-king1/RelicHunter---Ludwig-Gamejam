@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundName: GameMusic
   AudioClips:
-  - {fileID: 8300000, guid: 80304aed9a4e9cf4495a40570161edf5, type: 3}
+  - {fileID: 8300000, guid: 11afdedb961937243a37453dcc72e7b2, type: 3}
   IsSpatial: 0
   MaxDistance: 100
   MinDistance: 10

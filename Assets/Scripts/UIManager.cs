@@ -47,9 +47,29 @@ public class UIManager : MonoBehaviour
     //EndGame/Play again menu.
     public CanvasGroup endGameCanvasUI;
 
-    private void TurnoffGameUI()
+    //Controls Panel
+    public GameObject ControlsMenuUI;
+    public GameObject SettingsMenuUI;
+
+    //All game UI
+    public GameObject gameUIHolder;
+
+    public CanvasGroup fadePanelCanvas;
+
+    private void Start()
     {
-        endGameCanvasUI.gameObject.SetActive(true);
+        LeanTween.cancelAll();
+        LeanTween.alphaCanvas(fadePanelCanvas, 0, 2f);
+    }
+
+    private void TurnOffGameUI()
+    {
+        gameUIHolder.SetActive(false);
+    }
+
+    private void TurnOnGameUI()
+    {
+        gameUIHolder.SetActive(true);
     }
 
     public void SetAbilityUI(ABILITY type)
@@ -103,14 +123,24 @@ public class UIManager : MonoBehaviour
         Debug.Log("Called From: " + functionName);
         SettingsMenuActive = !SettingsMenuActive;
 
+
         if(SettingsMenuActive)
         {
+            TurnOnGameUI();
             LeanTween.moveLocalY(SettingsMenuPanel, SettingsMenuPanelOnScreen.localPosition.y, 0.4f).setEase(LeanTweenType.easeInSine).setIgnoreTimeScale(true);
         }
         else
         {
-            LeanTween.moveLocalY(SettingsMenuPanel, SettingsMenuPanelOffScreen.localPosition.y, 0.4f).setEase(LeanTweenType.easeInSine).setIgnoreTimeScale(true);
+            TurnOffGameEndUI();
+            LeanTween.moveLocalY(SettingsMenuPanel, SettingsMenuPanelOffScreen.localPosition.y, 0.4f).
+                setEase(LeanTweenType.easeInSine).setIgnoreTimeScale(true).setOnComplete(ResetMenuToDefault);
         }
+    }
+
+    private void ResetMenuToDefault()
+    {
+        ControlsMenuUI.SetActive(false);
+        SettingsMenuUI.SetActive(true);
     }
 
     public void SetTimerText(float minutes, float seconds)
@@ -187,5 +217,24 @@ public class UIManager : MonoBehaviour
         AudioManager.AudioInstance audio = ServiceLocator.Instance.audioManager.PlaySound
             (this.gameObject, ServiceLocator.Instance.audioManager.GetSoundBank("uibutton"), 0.015f);
         audio.AudioSource.ignoreListenerPause = true;
+    }
+
+    public void ToggleMenuState()
+    {
+        if(SettingsMenuUI.activeSelf)
+        {
+            SettingsMenuUI.SetActive(false);
+            ControlsMenuUI.SetActive(true);
+        }
+        else
+        {
+            SettingsMenuUI.SetActive(true);
+            ControlsMenuUI.SetActive(false);
+        }
+    }
+
+    public void EnableGameUI()
+    {
+        gameUIHolder.SetActive(true);
     }
 }

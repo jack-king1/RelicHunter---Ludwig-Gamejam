@@ -33,7 +33,10 @@ public class CameraManager : MonoBehaviour
         if(obj == dynamicCameraObject)
         {
             dynamicCameraObject = null;
-            cam.orthographicSize = 5;
+            if(cam != null)
+            {
+                cam.orthographicSize = 5;
+            }
         }
     }
 }

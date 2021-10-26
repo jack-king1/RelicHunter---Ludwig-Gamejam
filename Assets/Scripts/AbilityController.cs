@@ -71,7 +71,7 @@ public class AbilityController : MonoBehaviour
             return;
         }
 
-        if(ServiceLocator.Instance.gameManager.GetPaused())
+        if(ServiceLocator.Instance.gameManager.GetPaused() || ServiceLocator.Instance.gameManager.GetGameEnd())
         {
             return;
         }
