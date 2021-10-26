@@ -126,12 +126,13 @@ public class UIManager : MonoBehaviour
 
         if(SettingsMenuActive)
         {
-            TurnOnGameUI();
+            TurnOffGameUI();
+            
             LeanTween.moveLocalY(SettingsMenuPanel, SettingsMenuPanelOnScreen.localPosition.y, 0.4f).setEase(LeanTweenType.easeInSine).setIgnoreTimeScale(true);
         }
         else
         {
-            TurnOffGameEndUI();
+            TurnOnGameUI();
             LeanTween.moveLocalY(SettingsMenuPanel, SettingsMenuPanelOffScreen.localPosition.y, 0.4f).
                 setEase(LeanTweenType.easeInSine).setIgnoreTimeScale(true).setOnComplete(ResetMenuToDefault);
         }
@@ -161,6 +162,30 @@ public class UIManager : MonoBehaviour
     public void SetMusicSlider(float value)
     {
         musicSlider.value = value;
+    }
+
+    public void MusicMuteToggle()
+    {
+        if(musicSlider.value > 0.01)
+        {
+            musicSlider.value = 0.01f;
+        }
+        else if(musicSlider.value <= 0.01)
+        {
+            musicSlider.value = 1;
+        }
+    }
+
+    public void SoundMuteToggle()
+    {
+        if (soundSlider.value > 0.01)
+        {
+            soundSlider.value = 0.01f;
+        }
+        else if (soundSlider.value <= 0.01)
+        {
+            soundSlider.value = 1;
+        }
     }
 
     public void SetTeleportCountText(int value)

@@ -136,6 +136,10 @@ public class GameManager : MonoBehaviour
     public void ExitGame()
     {
         Time.timeScale = 1;
+        if(gameEnd)
+        {
+            ServiceLocator.Instance.playerManager.SetPlayerPosition(new Vector3(0, 0, 0));
+        }
         SetPlayerPosition();
         ApplyGameData();
 
