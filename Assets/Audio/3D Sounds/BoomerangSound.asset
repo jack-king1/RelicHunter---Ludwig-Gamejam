@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundName: Boomerang
   AudioClips:
-  - {fileID: 8300000, guid: d2329f57b23204d4f96247f46a5456ff, type: 3}
-  - {fileID: 8300000, guid: 8e62fa65c71e21a409316aaaaa979ffe, type: 3}
-  - {fileID: 8300000, guid: 5a947be60454106438bc1a5dbc27ba3d, type: 3}
+  - {fileID: 8300000, guid: a3c383906e32e3f4eaf2f184553ccf64, type: 3}
+  - {fileID: 8300000, guid: a3c383906e32e3f4eaf2f184553ccf64, type: 3}
+  - {fileID: 8300000, guid: a3c383906e32e3f4eaf2f184553ccf64, type: 3}
   IsSpatial: 1
   MaxDistance: 6
   MinDistance: 2

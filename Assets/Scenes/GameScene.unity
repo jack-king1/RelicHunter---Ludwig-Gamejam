@@ -54695,6 +54695,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2138159353157821213, guid: d115c302a26b22e48ab83a1fd545ba86, type: 3}
+      propertyPath: maxCandleRadius
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2138159353157821213, guid: d115c302a26b22e48ab83a1fd545ba86, type: 3}
+      propertyPath: candleReduceSpeed
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d115c302a26b22e48ab83a1fd545ba86, type: 3}
 --- !u!1001 &1070277579

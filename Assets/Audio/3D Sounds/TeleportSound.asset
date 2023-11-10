@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundName: Teleport
   AudioClips:
-  - {fileID: 8300000, guid: f9f4f59e3bb6cfa44ab47f767675fe48, type: 3}
-  - {fileID: 8300000, guid: 8b151efe278fca746b783dc801095dc0, type: 3}
-  - {fileID: 8300000, guid: dbcce1c3e94b6ed4f87c8c618d3e79c2, type: 3}
+  - {fileID: 8300000, guid: 7876245e60c79a84586fc45025ca3956, type: 3}
+  - {fileID: 8300000, guid: 7876245e60c79a84586fc45025ca3956, type: 3}
+  - {fileID: 8300000, guid: 7876245e60c79a84586fc45025ca3956, type: 3}
   IsSpatial: 1
   MaxDistance: 100
   MinDistance: 10

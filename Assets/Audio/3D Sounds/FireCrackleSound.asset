@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundName: FireCrackle
   AudioClips:
-  - {fileID: 8300000, guid: 7d1039f85b358bb498a56e8a63cd89c2, type: 3}
+  - {fileID: 8300000, guid: b561d7c79b7538342bedcfd6a832c63d, type: 3}
   IsSpatial: 1
   MaxDistance: 7
   MinDistance: 2
